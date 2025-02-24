@@ -1096,7 +1096,7 @@ function showCourseDetails(hour, day) {
             <div class="mb-4 p-3 border rounded">
                 <h6 class="mb-3">${c.course}</h6>
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>نوع کلاس:</strong> ${c.type === 'art' ? 'هنر' : c.type === 'language' ? 'زبان' : 'کامپیوتر'}</li>
+                    <li class="list-group-item"><strong>نوع کلاس:</strong> ${c.type === 'art' ? 'هنر' : c.type === 'language' ? 'زبان' : c.type === 'computer' ? 'کامپیوتر' : ''}</li>
                     <li class="list-group-item"><strong>استاد:</strong> ${c.professor}</li>
                     <li class="list-group-item"><strong>مکان:</strong> ${c.location}</li>
                 </ul>
