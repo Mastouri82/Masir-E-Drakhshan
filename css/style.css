@@ -854,7 +854,10 @@ body::-webkit-scrollbar {
   background: rgba(46, 204, 113, 0.9);
   color: white;
 }
-
+.course-badge.computer{
+  background-color: #2980b9;
+  color: #f4f4f4;
+}
 .time-label {
   font-weight: bold;
   margin-bottom: 10px;
