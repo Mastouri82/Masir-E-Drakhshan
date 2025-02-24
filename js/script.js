@@ -1,53 +1,53 @@
 // مدیریت بستن منو
 document.addEventListener("click", (e) => {
-  const navbar = document.querySelector(".navbar");
-  const menu = document.getElementById("navbarNav");
+    const navbar = document.querySelector(".navbar");
+    const menu = document.getElementById("navbarNav");
 
-  if (!navbar.contains(e.target) && menu.classList.contains("show")) {
-    new bootstrap.Collapse(menu).hide();
-  }
+    if (!navbar.contains(e.target) && menu.classList.contains("show")) {
+        new bootstrap.Collapse(menu).hide();
+    }
 });
 // ------------------------------------------------------------------------------------------
 
 // بستن منو در موبایل هنگام کلیک روی آیتم
 document.querySelectorAll(".nav-link").forEach((link) => {
-  link.addEventListener("click", () => {
-    if (window.innerWidth < 992) {
-      new bootstrap.Collapse(document.getElementById("navbarNav")).hide();
-    }
-  });
+    link.addEventListener("click", () => {
+        if (window.innerWidth < 992) {
+            new bootstrap.Collapse(document.getElementById("navbarNav")).hide();
+        }
+    });
 });
 // ------------------------------------------------------------------------------------------
 
 // swiper script
 const swiper = new Swiper(".swiper", {
-  spaceBetween: 300,
-  // Enable lazy loading
-  lazy: {
-    loadPrevNext: true,
-  },
+    spaceBetween: 300,
+    // Enable lazy loading
+    lazy: {
+        loadPrevNext: true,
+    },
 
-  // Responsive breakpoints
-  breakpoints: {
-    300: {
-      slidesPerView: 1,
-      spaceBetween: 20,
+    // Responsive breakpoints
+    breakpoints: {
+        300: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+        },
+        1024: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+        },
     },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 30,
-    },
-    1024: {
-      slidesPerView: 3,
-      spaceBetween: 40,
-    },
-  },
 
-  // Disable navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  }
+    // Disable navigation arrows
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    }
 
 });
 // ------------------------------------------------------------------------------------------
@@ -87,20 +87,146 @@ const scheduleData = {
     روزهای_هفته: ['شنبه', 'یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنجشنبه'],
     برنامه: [
         {
-            day:1, 
-            hour: 10,
+            day: 0,
+            hour: 13,
             classes: [
                 {
-                    type: 'art',
+                    type: 'language',
                     course: 'نقاشی پیشرفته',
-                    professor: 'استاد رضوی',
-                    location: 'آتلیه ۱۰۱'
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                }
+            ]
+        },
+        {
+            day: 0,
+            hour: 14,
+            classes: [
+                {
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
                 },
                 {
                     type: 'language',
                     course: 'آموزش انگلیسی',
-                    professor: 'استاد کریمی',
-                    location: 'کلاس ۲۰۲'
+                    professor: 'استاد نصرالهی',
+                    location: 'هنرهای تجسمی'
+                }
+            ]
+        },
+        {
+            day: 0,
+            hour: 15,
+            classes: [
+                {
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: 'art',
+                    course: 'طراحی نقاشی',
+                    professor: 'استاد بهرامی نژاد',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 0,
+            hour: 16,
+            classes: [
+                {
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: 'art',
+                    course: 'طراحی نقاشی',
+                    professor: 'استاد بهرامی نژاد',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 0,
+            hour: 17,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'طراحی نقاشی',
+                    professor: 'استاد بهرامی نژاد',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 0,
+            hour: 18,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش دف',
+                    professor: '',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'امورشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 0,
+            hour: 19,
+            classes: [
+                {
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد شامی',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 10,
+            classes: [
+                {
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد نصرالهی',
+                    location: 'اموزشی گردشگری'
                 }
             ]
         },
@@ -109,16 +235,16 @@ const scheduleData = {
             hour: 11,
             classes: [
                 {
-                    type: 'art',
-                    course: 'نقاشی پیشرفته',
-                    professor: 'استاد رضوی',
-                    location: 'آتلیه ۱۰۱'
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
                 },
                 {
                     type: 'language',
                     course: 'آموزش انگلیسی',
-                    professor: 'استاد کریمی',
-                    location: 'کلاس ۲۰۲'
+                    professor: 'استاد نصرالهی',
+                    location: 'اموزشی گردشگری'
                 }
             ]
         },
@@ -127,16 +253,502 @@ const scheduleData = {
             hour: 12,
             classes: [
                 {
-                    type: 'art',
-                    course: 'نقاشی پیشرفته',
-                    professor: 'استاد رضوی',
-                    location: 'آتلیه ۱۰۱'
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
                 },
                 {
                     type: 'language',
                     course: 'آموزش انگلیسی',
-                    professor: 'استاد کریمی',
-                    location: 'کلاس ۲۰۲'
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 14,
+            classes: [
+                {
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنرهای تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد نصرالهی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 15,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش موسیقی',
+                    professor: 'استاد مردانی',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد نصرالهی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 16,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش موسیقی',
+                    professor: 'استاد مردانی',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 17,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش موسیقی',
+                    professor: 'استاد مردانی',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 18,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'فن بیان',
+                    professor: 'استاد خانساری',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: '',
+                    location: ''
+                }
+            ]
+        },
+        {
+            day: 2,
+            hour: 14,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش موسیقی',
+                    professor: 'استاد کلهر',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                }
+            ]
+        },
+        {
+            day: 2,
+            hour: 15,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش موسیقی',
+                    professor: 'استاد کلهر',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'art',
+                    course: 'اموزش نقاشی',
+                    professor: 'استاد',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 2,
+            hour: 16,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش نقاشی',
+                    professor: 'استاد',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 17,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش خط',
+                    professor: 'استاد لطیفی',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                }
+            ]
+        },
+        {
+            day: 1,
+            hour: 18,
+            classes: [
+                {
+                    type: 'math',
+                    course: 'اموزش چرتکه',
+                    professor: 'استاد',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                }
+            ]
+        },
+        {
+            day: 2,
+            hour: 19,
+            classes: [
+                {
+                    type: 'computer',
+                    course: 'اموزش اسکرچ',
+                    professor: 'استاد',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                }
+            ]
+        },
+        {
+            day: 3,
+            hour: 10,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استادایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 3,
+            hour: 11,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 3,
+            hour: 12,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 3,
+            hour: 14,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش نقاشی',
+                    professor: 'استاد رحمانی',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد نصرالهی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 3,
+            hour: 16,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 3,
+            hour: 17,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد ایرانی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        },
+        {
+            day: 3,
+            hour: 18,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 10,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد نصرالهی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 11,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد نصرالهی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 13,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 14,
+            classes: [
+                {
+                    type: 'language',
+                    course: 'اموزش انگلیسی',
+                    professor: 'استاد نصرالهی',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 15,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش نقاشی',
+                    professor: 'استاد',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 16,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 17,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 18,
+            classes: [
+                {
+                    type: 'math',
+                    course: 'اموزش چرتکه',
+                    professor: '',
+                    location: 'هنر های تجسمی'
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
+                }
+            ]
+        },
+        {
+            day: 4,
+            hour: 19,
+            classes: [
+                {
+                    type: '',
+                    course: '',
+                    professor: '',
+                    location: ''
+                },
+                {
+                    type: 'language',
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد بهرامی',
+                    location: 'اموزشی گردشگری'
                 }
             ]
         },
@@ -145,13 +757,13 @@ const scheduleData = {
             hour: 8,
             classes: [
                 {
-                    type: 'art',
-                    course: 'یرنامه نویسی',
-                    professor: 'آقای مسطوری',
-                    location: 'هنرهای تجسمی'
+                    type: 'computer',
+                    course: 'برنامه نویسی',
+                    professor: 'استاد مسطوری',
+                    location: 'هنر های تجسمی'
                 },
                 {
-                    type: 'language',
+                    type: '',
                     course: '',
                     professor: '',
                     location: ''
@@ -163,16 +775,16 @@ const scheduleData = {
             hour: 9,
             classes: [
                 {
-                    type: 'art',
-                    course: 'ریاضی هفتم',
-                    professor: 'آقای مسطوری',
-                    location: 'هنرهای تجسمی'
+                    type: 'math',
+                    course: 'ریاضی پنجم',
+                    professor: 'استاد پورطیب',
+                    location: 'اموزشی گردشگری'
                 },
                 {
-                    type: 'language',
-                    course: 'ریاضی پنجم',
-                    professor: 'خانم پورطیب',
-                    location: 'خدمات اموزشی گردشگری'
+                    type: 'math',
+                    course: '',
+                    professor: 'استاد مسطوری',
+                    location: 'هنر های تجسمی'
                 }
             ]
         },
@@ -181,16 +793,16 @@ const scheduleData = {
             hour: 10,
             classes: [
                 {
-                    type: 'art',
-                    course: 'ریاضی هشتم',
-                    professor: 'آقای مسطوری',
-                    location: ''
+                    type: 'math',
+                    course: '',
+                    professor: 'استاد مسطوری',
+                    location: 'هنر های تجسمی'
                 },
                 {
                     type: 'language',
-                    course: '',
-                    professor: '',
-                    location: ''
+                    course: 'آموزش انگلیسی',
+                    professor: 'استاد پورطیب',
+                    location: 'اموزشی گردشگری'
                 }
             ]
         },
@@ -199,16 +811,16 @@ const scheduleData = {
             hour: 11,
             classes: [
                 {
-                    type: 'art',
-                    course: 'ریاضی دهم',
-                    professor: 'آقای مسطوری',
-                    location: ''
-                },
-                {
-                    type: 'language',
+                    type: '',
                     course: '',
                     professor: '',
                     location: ''
+                },
+                {
+                    type: 'math',
+                    course: 'ریاضی ششم',
+                    professor: 'استاد عبدی',
+                    location: 'هنر های تجسمی'
                 }
             ]
         },
@@ -218,19 +830,36 @@ const scheduleData = {
             classes: [
                 {
                     type: 'art',
-                    course: 'ICDL',
-                    professor: 'آقای عبدی',
-                    location: 'هنرهای تجسمی'
+                    course: 'اموزش نقاشی',
+                    professor: 'استاد کبیری',
+                    location: 'اموزشی گردشگری'
                 },
                 {
-                    type: 'language',
-                    course: '',
-                    professor: '',
-                    location: ''
+                    type: 'computer',
+                    course: 'اموزش کامپیوتر',
+                    professor: 'استاد عبدی',
+                    location: 'هنر های تجسمی'
                 }
             ]
         },
-        
+        {
+            day: 5,
+            hour: 13,
+            classes: [
+                {
+                    type: 'art',
+                    course: 'اموزش نقاشی',
+                    professor: 'استاد کبیری',
+                    location: 'اموزشی گردشگری'
+                },
+                {
+                    type: 'computer',
+                    course: 'اموزش کامپیوتر',
+                    professor: 'استاد عبدی',
+                    location: 'هنر های تجسمی'
+                }
+            ]
+        }
     ]
 };
 
@@ -244,15 +873,15 @@ function getCurrentDay() {
 
 // دریافت زمان فعلی
 function getCurrentTime() {
-  const now = new Date();
-  return {
-      hour: now.getHours(),
-      minute: now.getMinutes()
-  };
+    const now = new Date();
+    return {
+        hour: now.getHours(),
+        minute: now.getMinutes()
+    };
 }
 
 // به‌روزرسانی عنوان با نام روز
-document.querySelector('.schedule-title').textContent = 
+document.querySelector('.schedule-title').textContent =
     `برنامه امروز (${getCurrentDay()})`;
 
 // تولید برنامه امروز
@@ -260,12 +889,12 @@ document.querySelector('.schedule-title').textContent =
 // function generateTodaySchedule() {
 //     const container = document.getElementById('todaySchedule');
 //     let html = '';
-    
+
 //     for(let hour = 8; hour <= 20; hour++) {
 //         const courses = scheduleData.برنامه.filter(c => 
 //             c.day === currentDayIndex && c.hour === hour
 //         );
-        
+
 //         html += `
 //             <div class="time-slot ${courses.length ? 'active' : ''}" 
 //                  onclick="showCourseDetails(${hour}, ${currentDayIndex})">
@@ -276,7 +905,7 @@ document.querySelector('.schedule-title').textContent =
 //             </div>
 //         `;
 //     }
-    
+
 //     container.innerHTML = html;
 // }
 
@@ -284,12 +913,12 @@ document.querySelector('.schedule-title').textContent =
 // function generateTodaySchedule() {
 //     const container = document.getElementById('todaySchedule');
 //     let html = '';
-    
+
 //     for(let hour = 8; hour <= 20; hour++) {
 //         const courses = scheduleData.برنامه.filter(c => 
 //             c.day === currentDayIndex && c.hour === hour
 //         );
-        
+
 //         html += `
 //             <div class="time-slot ${courses.length ? 'active' : ''}" 
 //                  onclick="showCourseDetails(${hour}, ${currentDayIndex})">
@@ -302,35 +931,35 @@ document.querySelector('.schedule-title').textContent =
 //             </div>
 //         `;
 //     }
-    
+
 //     container.innerHTML = html;
 // }
 
 
 // تولید برنامه امروز با قابلیت نمایش وضعیت کلاس‌ها
 function generateTodaySchedule() {
-  const container = document.getElementById('todaySchedule');
-  const currentTime = getCurrentTime();
-  const currentHour = currentTime.hour;
-  const currentMinute = currentTime.minute;
-  
-  let html = '';
-  
-  for(let hour = 8; hour <= 20; hour++) {
-      const courses = scheduleData.برنامه.filter(c => 
-          c.day === currentDayIndex && c.hour === hour
-      );
-      
-      if(courses.length === 0) continue;
-      
-      const isFuture = hour > currentHour;
-      const isCurrent = hour === currentHour;
-      
-      const courseDuration = courses[0].duration || 1;
-      const progress = isCurrent ? 
-          Math.min((currentMinute / (courseDuration * 60)) * 100, 100) : 0;
-      
-      html += `
+    const container = document.getElementById('todaySchedule');
+    const currentTime = getCurrentTime();
+    const currentHour = currentTime.hour;
+    const currentMinute = currentTime.minute;
+
+    let html = '';
+
+    for (let hour = 8; hour <= 20; hour++) {
+        const courses = scheduleData.برنامه.filter(c =>
+            c.day === currentDayIndex && c.hour === hour
+        );
+
+        if (courses.length === 0) continue;
+
+        const isFuture = hour > currentHour;
+        const isCurrent = hour === currentHour;
+
+        const courseDuration = courses[0].duration || 1;
+        const progress = isCurrent ?
+            Math.min((currentMinute / (courseDuration * 60)) * 100, 100) : 0;
+
+        html += `
           <div class="time-slot ${isCurrent ? 'current' : 'future'}" 
                style="${isCurrent ? `--progress: ${progress}%` : ''}"
                onclick="showCourseDetails(${hour}, ${currentDayIndex})">
@@ -342,9 +971,9 @@ function generateTodaySchedule() {
               `).join('')}
           </div>
       `;
-  }
-  
-  container.innerHTML = html;
+    }
+
+    container.innerHTML = html;
 }
 
 
@@ -353,16 +982,16 @@ function generateTodaySchedule() {
 // function generateFullSchedule() {
 //     const container = document.getElementById('fullSchedule');
 //     let html = '';
-    
+
 //     for(let hour = 8; hour <= 20; hour++) {
 //         html += '<tr>';
 //         html += `<td>${hour}:00</td>`;
-        
+
 //         scheduleData.روزهای_هفته.forEach((_, dayIndex) => {
 //             const courses = scheduleData.برنامه.filter(c => 
 //                 c.day === dayIndex && c.hour === hour
 //             );
-            
+
 //             html += `
 //                 <td class="${courses.length ? 'active' : ''}" 
 //                     onclick="showCourseDetails(${hour}, ${dayIndex})">
@@ -371,41 +1000,40 @@ function generateTodaySchedule() {
 //                 </td>
 //             `;
 //         });
-        
+
 //         html += '</tr>';
 //     }
-    
+
 //     container.innerHTML = html;
 // }
 
 function generateFullSchedule() {
     const container = document.getElementById('fullSchedule');
     let html = '';
-    
+
     for (let hour = 8; hour <= 20; hour++) {
         html += '<tr>';
         html += `<td>${hour}:00</td>`;
-        
+
         scheduleData.روزهای_هفته.forEach((_, dayIndex) => {
-            const courses = scheduleData.برنامه.filter(c => 
+            const courses = scheduleData.برنامه.filter(c =>
                 c.day === dayIndex && c.hour === hour
             );
-            
+
             html += `
                 <td class="${courses.length ? 'active' : ''}" 
                     onclick="showCourseDetails(${hour}, ${dayIndex})">
-                    ${
-                        courses.length 
-                        ? courses[0].classes.map(c => c.course).join(', ') 
-                        : ''
-                    }
+                    ${courses.length
+                    ? courses[0].classes.map(c => c.course).join(', ')
+                    : ''
+                }
                 </td>
             `;
         });
-        
+
         html += '</tr>';
     }
-    
+
     container.innerHTML = html;
 }
 
@@ -428,7 +1056,7 @@ function generateFullSchedule() {
 //                 </ul>
 //             </div>
 //         `).join('');
-        
+
 //         new bootstrap.Modal(document.getElementById('courseModal')).show();
 //     }
 // }
@@ -458,7 +1086,7 @@ function showCourseDetails(hour, day) {
     }
 
     // یافتن کلاس‌های موجود در ساعت و روز مورد نظر
-    const courses = scheduleData.برنامه.find(c => 
+    const courses = scheduleData.برنامه.find(c =>
         c.day === day && c.hour === hour
     )?.classes || [];
 
@@ -496,12 +1124,12 @@ setInterval(generateTodaySchedule, 60000);
 // در بخش JavaScript
 // function updateClassColors() {
 //   const currentTime = getCurrentTime();
-  
+
 //   document.querySelectorAll('.time-slot.current').forEach(slot => {
 //       const startHour = parseInt(slot.querySelector('.time-label').textContent.split(':')[0]);
 //       const courseDuration = 2; // مدت زمان کلاس به ساعت
 //       const progress = ((currentTime.hour - startHour) * 60 + currentTime.minute) / (courseDuration * 60);
-      
+
 //       let r, g, b;
 //       if (progress <= 0.5) {
 //           // از سبز به زرد
@@ -514,9 +1142,9 @@ setInterval(generateTodaySchedule, 60000);
 //           g = Math.floor(196 - 196 * ((progress - 0.5) * 2));
 //           b = Math.floor(15 - 15 * ((progress - 0.5) * 2));
 //       }
-      
+
 //       slot.style.backgroundColor = `rgb(${r},${g},${b})`;
-      
+
 //       // تغییر رنگ متن برای خوانایی
 //       const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 //       slot.style.color = luminance > 0.5 ? '#2c3e50' : 'white';
@@ -525,7 +1153,7 @@ setInterval(generateTodaySchedule, 60000);
 
 function updateClassColors() {
     const currentTime = getCurrentTime();
-  
+
     document.querySelectorAll('.time-slot').forEach(slot => {
         const startHour = parseInt(slot.querySelector('.time-label').textContent.split(':')[0]);
         const startMinute = parseInt(slot.querySelector('.time-label').textContent.split(':')[1]) || 0;
@@ -533,9 +1161,9 @@ function updateClassColors() {
         const classStartTime = startHour * 60 + startMinute; // زمان شروع کلاس به دقیقه
         const classEndTime = classStartTime + courseDuration; // زمان پایان کلاس به دقیقه
         const currentMinutes = currentTime.hour * 60 + currentTime.minute; // زمان کنونی به دقیقه
-  
+
         let r, g, b;
-  
+
         if (currentMinutes < classStartTime) {
             // اگر کلاس هنوز شروع نشده باشد → خاکستری
             r = 200;
@@ -550,7 +1178,7 @@ function updateClassColors() {
             slot.style.color = 'white';
         } else {
             const elapsedTime = currentMinutes - classStartTime; // دقیقه‌های سپری‌شده از شروع کلاس
-  
+
             if (elapsedTime <= 20) {
                 // مرحله ۱: سبز (46, 204, 113)
                 r = 46;
@@ -573,10 +1201,10 @@ function updateClassColors() {
                 slot.style.color = 'white';
             }
         }
-  
+
         slot.style.backgroundColor = `rgb(${r},${g},${b})`;
     });
-  }
+}
 
 // به روزرسانی هر ثانیه
 setInterval(updateClassColors, 1000);
