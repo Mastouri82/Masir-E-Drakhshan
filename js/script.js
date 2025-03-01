@@ -864,11 +864,13 @@ const scheduleData = {
 
 // دریافت روز فعلی
 function getCurrentDay() {
-  const days = ["یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "شنبه"];
-  const today = new Date().getDay();
-  return days[today];
+  const days = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه"];
+  const today = new Date().getDay(); // 0 (یکشنبه) تا 6 (شنبه) در سیستم‌های میلادی
+ 
+  console.log(today);
+  
+  return days[today-6];
 }
-
 // دریافت زمان فعلی
 function getCurrentTime() {
   const now = new Date();
@@ -879,6 +881,7 @@ function getCurrentTime() {
 }
 
 // به‌روزرسانی عنوان با نام روز
+
 document.querySelector(
   ".schedule-title"
 ).textContent = `برنامه امروز (${getCurrentDay()})`;
@@ -940,6 +943,8 @@ function generateTodaySchedule() {
   const currentTime = getCurrentTime();
   const currentHour = currentTime.hour;
   const currentMinute = currentTime.minute;
+  const currentDayName = getCurrentDay();
+  const currentDayIndex = scheduleData.روزهای_هفته.indexOf(currentDayName);
 
   let html = "";
 
@@ -948,37 +953,38 @@ function generateTodaySchedule() {
       (c) => c.day === currentDayIndex && c.hour === hour
     );
 
-    if (courses.length === 0) continue;
-
-    const isFuture = hour > currentHour;
+    // زمان جاری و وضعیت کلاس
     const isCurrent = hour === currentHour;
-
-    const courseDuration = courses[0].duration || 1;
+    const courseDuration = 60; // مدت زمان کلاس به دقیقه
     const progress = isCurrent
-      ? Math.min((currentMinute / (courseDuration * 60)) * 100, 100)
+      ? Math.min((currentMinute / courseDuration) * 100, 100)
       : 0;
 
     html += `
-          <div class="time-slot ${isCurrent ? "current" : "future"}" 
-               style="${isCurrent ? `--progress: ${progress}%` : ""}"
-               onclick="showCourseDetails(${hour}, ${currentDayIndex})">
-              <div class="time-label">${hour}:00</div>
-              ${courses[0].classes
-                .map(
-                  (c) => `
-                  <span class="course-badge ${c.type}">
-                      ${c.course}
-                  </span>
-              `
+      <div class="time-slot ${isCurrent ? "current" : ""}" 
+           style="${isCurrent ? `--progress: ${progress}%` : ""}"
+           onclick="showCourseDetails(${hour}, ${currentDayIndex})">
+        <div class="time-label">${hour}:00</div>
+        ${
+          courses.length
+            ? courses[0].classes
+                .map((c) =>
+                  c.course
+                    ? `
+              <span class="course-badge ${c.type}">
+                ${c.course}
+              </span>`
+                    : ""
                 )
-                .join("")}
-          </div>
-      `;
+                .join("")
+            : '<div class="text-muted">بدون کلاس</div>'
+        }
+      </div>
+    `;
   }
 
   container.innerHTML = html;
 }
-
 // تولید برنامه کامل
 // function generateFullSchedule() {
 //     const container = document.getElementById('fullSchedule');
@@ -1168,68 +1174,68 @@ setInterval(generateTodaySchedule, 60000);
 
 function updateClassColors() {
   const currentTime = getCurrentTime();
+  const currentMinutes = currentTime.hour * 60 + currentTime.minute;
 
-  document.querySelectorAll(".time-slot").forEach((slot) => {
-    const startHour = parseInt(
-      slot.querySelector(".time-label").textContent.split(":")[0]
-    );
-    const startMinute =
-      parseInt(slot.querySelector(".time-label").textContent.split(":")[1]) ||
-      0;
-    const courseDuration = 60; // کل مدت کلاس (دقیقه)
-    const classStartTime = startHour * 60 + startMinute; // زمان شروع کلاس به دقیقه
-    const classEndTime = classStartTime + courseDuration; // زمان پایان کلاس به دقیقه
-    const currentMinutes = currentTime.hour * 60 + currentTime.minute; // زمان کنونی به دقیقه
+  document.querySelectorAll('.time-slot').forEach(slot => {
+      const hourLabel = slot.querySelector('.time-label').textContent;
+      const startHour = parseInt(hourLabel.split(':')[0]);
+      const classStart = startHour * 60; // زمان شروع به دقیقه
+      const classDuration = 60; // مدت کلاس 60 دقیقه
+      const classEnd = classStart + classDuration;
 
-    let r, g, b;
+      // زمان سپری شده از شروع کلاس
+      const elapsedTime = currentMinutes - classStart;
 
-    if (currentMinutes < classStartTime) {
-      // اگر کلاس هنوز شروع نشده باشد → خاکستری
-      r = 200;
-      g = 200;
-      b = 200;
-      slot.style.color = "black";
-    } else if (currentMinutes >= classEndTime) {
-      // اگر کلاس تمام شده باشد → قرمز
-      r = 255;
-      g = 0;
-      b = 0;
-      slot.style.color = "white";
-    } else {
-      const elapsedTime = currentMinutes - classStartTime; // دقیقه‌های سپری‌شده از شروع کلاس
-
-      if (elapsedTime <= 20) {
-        // مرحله ۱: سبز (46, 204, 113)
-        r = 46;
-        g = 204;
-        b = 113;
-        slot.style.color = "white";
-      } else if (elapsedTime <= 40) {
-        // مرحله ۲: تغییر از سبز به زرد (255, 255, 0)
-        let progress = (elapsedTime - 20) / 20;
-        r = Math.floor(46 + (255 - 46) * progress);
-        g = Math.floor(204 + (255 - 204) * progress);
-        b = Math.floor(113 - 113 * progress);
-        slot.style.color = "#000"; // متن مشکی در مرحله زرد
+      let r, g, b;
+      
+      if (currentMinutes < classStart) {
+          // قبل از شروع کلاس - خاکستری
+          r = 238;
+          g = 238;
+          b = 238;
+      } else if (currentMinutes > classEnd) {
+          // پس از پایان کلاس - قرمز تیره
+          r = 220;
+          g = 53;
+          b = 69;
       } else {
-        // مرحله ۳: تغییر از زرد به قرمز (255, 0, 0)
-        let progress = (elapsedTime - 40) / 20;
-        r = 255;
-        g = Math.floor(255 - 255 * progress);
-        b = 0;
-        slot.style.color = "white";
+          // محاسبه رنگ بر اساس پیشرفت زمان
+          if (elapsedTime <= 20) {
+              // فاز اول: زرد → نارنجی (255,255,0 → 255,165,0)
+              const progress = elapsedTime / 20;
+              r = 255;
+              g = 255 - (90 * progress); // 255 → 165
+              b = 0;
+          } else if (elapsedTime <= 40) {
+              // فاز دوم: نارنجی → قرمز (255,165,0 → 255,0,0)
+              const progress = (elapsedTime - 20) / 20;
+              r = 255;
+              g = 165 - (165 * progress); // 165 → 0
+              b = 0;
+          } else {
+              // فاز سوم: قرمز ثابت
+              r = 255;
+              g = 0;
+              b = 0;
+          }
       }
-    }
 
-    slot.style.backgroundColor = `rgb(${r},${g},${b})`;
+      // تنظیم رنگ پس‌زمینه
+      slot.style.backgroundColor = `rgb(${r},${g},${b})`;
+
+      // تنظیم رنگ متن بر اساس روشنایی
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      slot.style.color = luminance > 0.6 ? '#2c3e50' : 'white';
   });
 }
-
 // به روزرسانی هر ثانیه
-setInterval(updateClassColors, 1000);
+// اجرای اولیه
+generateTodaySchedule();
+generateFullSchedule();
+updateClassColors();
+setInterval(() => {
+  generateTodaySchedule();
+  updateClassColors();
+}, 600000);
 
 // ------------------------------------------------------------------------------------------
-
-// our team
-// اطلاعات اساتید
-
