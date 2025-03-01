@@ -866,10 +866,10 @@ const scheduleData = {
 function getCurrentDay() {
   const days = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه"];
   const today = new Date().getDay(); // 0 (یکشنبه) تا 6 (شنبه) در سیستم‌های میلادی
- 
+
   console.log(today);
-  
-  return days[today-6];
+
+  return days[today - 6];
 }
 // دریافت زمان فعلی
 function getCurrentTime() {
@@ -1176,56 +1176,56 @@ function updateClassColors() {
   const currentTime = getCurrentTime();
   const currentMinutes = currentTime.hour * 60 + currentTime.minute;
 
-  document.querySelectorAll('.time-slot').forEach(slot => {
-      const hourLabel = slot.querySelector('.time-label').textContent;
-      const startHour = parseInt(hourLabel.split(':')[0]);
-      const classStart = startHour * 60; // زمان شروع به دقیقه
-      const classDuration = 60; // مدت کلاس 60 دقیقه
-      const classEnd = classStart + classDuration;
+  document.querySelectorAll(".time-slot").forEach((slot) => {
+    const hourLabel = slot.querySelector(".time-label").textContent;
+    const startHour = parseInt(hourLabel.split(":")[0]);
+    const classStart = startHour * 60; // زمان شروع به دقیقه
+    const classDuration = 60; // مدت کلاس 60 دقیقه
+    const classEnd = classStart + classDuration;
 
-      // زمان سپری شده از شروع کلاس
-      const elapsedTime = currentMinutes - classStart;
+    // زمان سپری شده از شروع کلاس
+    const elapsedTime = currentMinutes - classStart;
 
-      let r, g, b;
-      
-      if (currentMinutes < classStart) {
-          // قبل از شروع کلاس - خاکستری
-          r = 238;
-          g = 238;
-          b = 238;
-      } else if (currentMinutes > classEnd) {
-          // پس از پایان کلاس - قرمز تیره
-          r = 220;
-          g = 53;
-          b = 69;
+    let r, g, b;
+
+    if (currentMinutes < classStart) {
+      // قبل از شروع کلاس - خاکستری
+      r = 238;
+      g = 238;
+      b = 238;
+    } else if (currentMinutes > classEnd) {
+      // پس از پایان کلاس - قرمز تیره
+      r = 220;
+      g = 53;
+      b = 69;
+    } else {
+      // محاسبه رنگ بر اساس پیشرفت زمان
+      if (elapsedTime <= 20) {
+        // فاز اول: زرد → نارنجی (255,255,0 → 255,165,0)
+        const progress = elapsedTime / 20;
+        r = 255;
+        g = 255 - 90 * progress; // 255 → 165
+        b = 0;
+      } else if (elapsedTime <= 40) {
+        // فاز دوم: نارنجی → قرمز (255,165,0 → 255,0,0)
+        const progress = (elapsedTime - 20) / 20;
+        r = 255;
+        g = 165 - 165 * progress; // 165 → 0
+        b = 0;
       } else {
-          // محاسبه رنگ بر اساس پیشرفت زمان
-          if (elapsedTime <= 20) {
-              // فاز اول: زرد → نارنجی (255,255,0 → 255,165,0)
-              const progress = elapsedTime / 20;
-              r = 255;
-              g = 255 - (90 * progress); // 255 → 165
-              b = 0;
-          } else if (elapsedTime <= 40) {
-              // فاز دوم: نارنجی → قرمز (255,165,0 → 255,0,0)
-              const progress = (elapsedTime - 20) / 20;
-              r = 255;
-              g = 165 - (165 * progress); // 165 → 0
-              b = 0;
-          } else {
-              // فاز سوم: قرمز ثابت
-              r = 255;
-              g = 0;
-              b = 0;
-          }
+        // فاز سوم: قرمز ثابت
+        r = 255;
+        g = 0;
+        b = 0;
       }
+    }
 
-      // تنظیم رنگ پس‌زمینه
-      slot.style.backgroundColor = `rgb(${r},${g},${b})`;
+    // تنظیم رنگ پس‌زمینه
+    slot.style.backgroundColor = `rgb(${r},${g},${b})`;
 
-      // تنظیم رنگ متن بر اساس روشنایی
-      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-      slot.style.color = luminance > 0.6 ? '#2c3e50' : 'white';
+    // تنظیم رنگ متن بر اساس روشنایی
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    slot.style.color = luminance > 0.6 ? "#2c3e50" : "white";
   });
 }
 // به روزرسانی هر ثانیه
@@ -1234,8 +1234,87 @@ generateTodaySchedule();
 generateFullSchedule();
 updateClassColors();
 setInterval(() => {
-  generateTodaySchedule();
   updateClassColors();
-}, 600000);
+}, 300000);
 
 // ------------------------------------------------------------------------------------------
+
+// داده‌های نمونه اساتید
+const professors = [
+  {
+    id: 1,
+    name: "دکتر احمدی",
+    image: "prof1.jpg",
+    field: "برنامه‌نویسی پیشرفته",
+    bio: "استاد برجسته حوزه برنامه‌نویسی با ۱۵ سال سابقه تدریس",
+    classes: ["پایتون پیشرفته", "الگوریتم‌ها", "هوش مصنوعی"],
+  },
+  {
+    id: 2,
+    name: "دکتر رضایی",
+    image: "prof2.jpg",
+    field: "هوش مصنوعی",
+    bio: "متخصص در حوزه یادگیری ماشین و شبکه‌های عصبی",
+    classes: ["یادگیری عمیق", "پردازش تصویر", "داده‌کاوی"],
+  },
+  // اضافه کردن اساتید دیگر...
+];
+
+// تولید کارت استاد
+function createProfessorCard(professor) {
+  return `
+      <div class="professor-card" onclick="showProfessorDetails(${professor.id})">
+          <img src="${professor.image}" class="professor-image" alt="${professor.name}">
+          <h3 class="professor-name">${professor.name}</h3>
+      </div>
+  `;
+}
+
+// نمایش جزئیات استاد
+function showProfessorDetails(id) {
+  const professor = professors.find((p) => p.id === id);
+  const modal = document.getElementById("professorDetails");
+  modal.innerHTML = `
+      <h3>${professor.name}</h3>
+      <p>${professor.bio}</p>
+      <h4>کلاس‌ها:</h4>
+      <ul>
+          ${professor.classes.map((c) => `<li>${c}</li>`).join("")}
+      </ul>
+      <button onclick="closeDetailsModal()">بستن</button>
+  `;
+
+  modal.style.display = "block";
+}
+
+// نمایش همه اساتید
+function showAllProfessors() {
+  const modal = document.getElementById("professorsModal");
+  const container = document.getElementById("allProfessors");
+
+  container.innerHTML = professors.map((p) => createProfessorCard(p)).join("");
+  modal.style.display = "block";
+}
+
+// بستن مدال‌ها
+window.onclick = function (event) {
+  const professorsModal = document.getElementById("professorsModal");
+  const detailsModal = document.getElementById("professorDetails");
+
+  if (event.target === professorsModal) {
+    professorsModal.style.display = "none";
+  }
+  if (event.target === detailsModal) {
+    detailsModal.style.display = "none";
+  }
+};
+
+function closeDetailsModal() {
+  document.getElementById("professorDetails").style.display = "none";
+}
+
+// مقداردهی اولیه
+document.getElementById("mainProfessors").innerHTML = professors
+  .slice(0, 4)
+  .map((p) => createProfessorCard(p))
+  .join("");
