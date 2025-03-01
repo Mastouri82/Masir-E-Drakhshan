@@ -81,7 +81,7 @@
         </div>
       </div>
 
-      <div class="scroll-down">
+      <div class="scroll-down d-flex justify-content-center w-100">
         <i class="fas fa-chevron-down text-white fa-2x"></i>
       </div>
     </section>
@@ -275,7 +275,7 @@
 
     <!-- artcle -->
     <section class="my-4 courses-wrp">
-      <div class="container  p-3">
+      <div class="container p-3">
         <h2 class="text-center mb-5">مقالات</h2>
 
         <!-- Slider main container -->
@@ -500,54 +500,83 @@
         </div>
       </div>
     </section>
-     
+
     <!-- schedule -->
     <div class="container py-4">
       <div class="today-schedule">
-          <h3 class="schedule-title">برنامه امروز (<?php echo getCurrentDay(); ?>)</h3>
-          <div class="time-slots-container" id="todaySchedule"></div>
+        <h3 class="schedule-title">برنامه امروز</h3>
+        <div class="time-slots-container" id="todaySchedule"></div>
       </div>
-      
-      <button 
-          class="btn btn-primary w-100 py-2"
-          style="border-radius: 10px; font-size: 1.1rem;"
-          data-bs-toggle="modal" 
-          data-bs-target="#fullScheduleModal"
+
+      <button
+        class="btn btn-primary w-100 py-2"
+        style="border-radius: 10px; font-size: 1.1rem"
+        data-bs-toggle="modal"
+        data-bs-target="#fullScheduleModal"
       >
-          📅 نمایش کل برنامه هفتگی
+        📅 نمایش کل برنامه هفتگی
       </button>
-  </div>
-  
-  <!-- Modal برنامه کامل -->
-  <div class="modal fade" id="fullScheduleModal" tabindex="-1">
+    </div>
+
+    <!-- Modal برنامه کامل -->
+    <div class="modal fade" id="fullScheduleModal" tabindex="-1">
       <div class="modal-dialog modal-fullscreen-md-down">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h5 class="modal-title">برنامه هفتگی کامل</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-              <div class="modal-body">
-                  <div style="overflow-x: auto;">
-                      <table class="full-schedule-table">
-                          <thead>
-                              <tr>
-                                  <th>ساعت</th>
-                                  <th>شنبه</th>
-                                  <th>یکشنبه</th>
-                                  <th>دوشنبه</th>
-                                  <th>سه‌شنبه</th>
-                                  <th>چهارشنبه</th>
-                                  <th>پنجشنبه</th>
-                                 
-                              </tr>
-                          </thead>
-                          <tbody id="fullSchedule"></tbody>
-                      </table>
-                  </div>
-              </div>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">برنامه هفتگی کامل</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
           </div>
+          <div class="modal-body">
+            <div style="overflow-x: auto">
+              <table class="full-schedule-table">
+                <thead>
+                  <tr>
+                    <th>ساعت</th>
+                    <th>شنبه</th>
+                    <th>یکشنبه</th>
+                    <th>دوشنبه</th>
+                    <th>سه‌شنبه</th>
+                    <th>چهارشنبه</th>
+                    <th>پنجشنبه</th>
+                  </tr>
+                </thead>
+                <tbody id="fullSchedule"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
-  </div>
+    </div>
+    <!-- our team -->.
+    <div class="professors-container">
+      <h1 class="professors-title">اساتید دانشگاه</h1>
+
+      <!-- Slider main container -->
+      <div class="swiper">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper" id="professorsGrid"></div>
+        <!-- Navigation buttons -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+
+    <!-- پنجره اطلاعات استاد -->
+    <div class="modal-overlay" id="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <img id="modalImage" class="modal-image" />
+        <h2 id="modalName"></h2>
+        <p id="modalDepartment"></p>
+        <p id="modalBio"></p>
+        <h3>کلاس‌های در حال تدریس:</h3>
+        <ul class="modal-classes" id="modalClasses"></ul>
+      </div>
+    </div>
     <!-- js sources -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

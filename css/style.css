@@ -181,10 +181,9 @@ body::-webkit-scrollbar {
 .scroll-down {
   position: absolute;
   bottom: 50px;
-  left: 49%;
+
   transform: translateX(-50%);
   animation: bounce 2s infinite;
-  align-items: center;
 }
 
 @keyframes fadeInUp {
@@ -487,82 +486,82 @@ body::-webkit-scrollbar {
 
 /* announcement */
 .announcement-section {
-    background: #f8f9fa;
-    padding: 40px 0;
-    border-radius: 10px;
-    margin: 40px 0;
+  background: #f8f9fa;
+  padding: 40px 0;
+  border-radius: 10px;
+  margin: 40px 0;
 }
 
 .announcement-card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: all 0.3s ease;
-    border-left: 4px solid transparent;
-    cursor:default;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+  cursor: default;
 }
 
 .announcement-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .announcement-card.warning {
-    border-left-color: var(--warning-color);
+  border-left-color: var(--warning-color);
 }
 
 .announcement-card.danger {
-    border-left-color: var(--danger-color);
+  border-left-color: var(--danger-color);
 }
 
 .announcement-card.success {
-    border-left-color: var(--success-color);
+  border-left-color: var(--success-color);
 }
 
 .announcement-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    margin-left: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-left: 15px;
 }
 
 .announcement-icon.warning {
-    background: var(--warning-color);
-    color: #fff;
+  background: var(--warning-color);
+  color: #fff;
 }
 
 .announcement-icon.danger {
-    background: var(--danger-color);
-    color: #fff;
+  background: var(--danger-color);
+  color: #fff;
 }
 
 .announcement-icon.success {
-    background: var(--success-color);
-    color: #fff;
+  background: var(--success-color);
+  color: #fff;
 }
 
 .announcement-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .announcement-date {
-    font-size: 0.9rem;
-    color: #95a5a6;
-    margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #95a5a6;
+  margin-bottom: 15px;
 }
 
 .announcement-description {
-    font-size: 0.95rem;
-    color: #2c3e50;
-    line-height: 1.6;
+  font-size: 0.95rem;
+  color: #2c3e50;
+  line-height: 1.6;
 }
 /* ---------------------------------------------------------- */
 
@@ -570,233 +569,226 @@ body::-webkit-scrollbar {
 
 /* استایل‌های پایه */
 .today-schedule {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    margin: 20px 0;
-    padding: 20px;
-    animation: slideInUp 0.5s ease;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
+  padding: 20px;
+  animation: slideInUp 0.5s ease;
 }
 
 .schedule-title {
-    font-size: 1.4rem;
-    color: var(--primary-blue);
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-right: 1rem;
-    animation: fadeIn 0.8s ease;
-}
-
-.schedule-title::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: -5px;
-    width: 50px;
-    height: 3px;
-    background: var(--primary-blue);
-    border-radius: 2px;
+  font-size: 1.4rem;
+  color: var(--primary-blue);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-right: 1rem;
+  animation: fadeIn 0.8s ease;
 }
 
 .time-slots-container {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
 .time-slot {
-    min-width: 100px;
-    padding: 15px;
-    border-radius: 10px;
-    background: #f8f9fa;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: scaleIn 0.4s ease;
-    flex-shrink: 0;
-    position: relative;
-    border: 2px solid transparent;
+  min-width: 100px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: scaleIn 0.4s ease;
+  flex-shrink: 0;
+  position: relative;
+  border: 2px solid transparent;
 }
 
 .time-slot.active {
-    background: var(--primary-blue);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+  background: var(--primary-blue);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
 }
 
 .time-slot:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .time-label {
-    font-size: 0.9rem;
-    
-    opacity: 0.8;
+  font-size: 0.9rem;
+
+  opacity: 0.8;
 }
 
 .course-name {
-    font-size: 0.95rem;
-    font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 500;
 }
 
 /* استایل‌های موبایل */
 @media (max-width: 768px) {
-    .time-slots-container {
-        flex-direction: column;
-        overflow-x: visible;
-    }
-    
-    .time-slot {
-        width: 100%;
-        min-width: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 15px;
-    }
-    
-    .schedule-title {
-        font-size: 1.2rem;
-    }
+  .time-slots-container {
+    flex-direction: column;
+    overflow-x: visible;
+  }
+
+  .time-slot {
+    width: 100%;
+    min-width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+  }
+
+  .schedule-title {
+    font-size: 1.2rem;
+  }
 }
 
 /* انیمیشن‌ها */
 @keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleIn {
-    from {
-        transform: scale(0.9);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* جدول کامل */
 .full-schedule-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 8px;
-    animation: fadeIn 0.6s ease;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px;
+  animation: fadeIn 0.6s ease;
 }
 
 .full-schedule-table th {
-    background: var(--primary-blue);
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.95rem;
+  background: var(--primary-blue);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
 }
 
 .full-schedule-table td {
-    background: #f8f9fa;
-    padding: 12px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .full-schedule-table td::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(52, 152, 219, 0.1);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(52, 152, 219, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .full-schedule-table td:hover::before {
-    opacity: 1;
+  opacity: 1;
 }
 
 .full-schedule-table td.active {
-    background: var(--primary-blue);
-    color: white;
-    transform: scale(1.02);
+  background: var(--primary-blue);
+  color: white;
+  transform: scale(1.02);
 }
 :root {
-    --primary-color: #3498db;
-    --secondary-color: #2980b9;
+  --primary-color: #3498db;
+  --secondary-color: #2980b9;
 }
 
 .today-schedule {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    margin: 20px 0;
-    padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
+  padding: 20px;
 }
 
 .time-slots-container {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 10px;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
 }
 
 .time-slot {
-    min-width: 120px;
-    padding: 15px;
-    border-radius: 10px;
-    background: #f8f9fa;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    border: 2px solid transparent;
+  min-width: 120px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  border: 2px solid transparent;
 }
 
 .time-slot.active {
-    border-color: var(--primary-color);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
 }
 
 .course-badge {
-    display: block;
-    padding: 5px;
-    margin: 3px 0;
-    border-radius: 5px;
-    font-size: 0.9rem;
+  display: block;
+  padding: 5px;
+  margin: 3px 0;
+  border-radius: 5px;
+  font-size: 0.9rem;
 }
 
 .course-badge.art {
-    background: #f1c40f;
-    color: #2c3e50;
+  background: #f1c40f;
+  color: #2c3e50;
 }
 
 .course-badge.language {
-    background: #2ecc71;
-    color: white;
+  background: #2ecc71;
+  color: white;
 }
 .today-schedule {
   background: #fff;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   margin: 20px 0;
   padding: 20px;
 }
@@ -825,14 +817,17 @@ body::-webkit-scrollbar {
 }
 
 .time-slot.current {
-
   background-size: 200% 100%;
   animation: progressBackground 1s linear forwards;
 }
 
 @keyframes progressBackground {
-  from { background-position: 100% 0; }
-  to { background-position: 0% 0; }
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
 }
 
 .course-badge {
@@ -854,7 +849,7 @@ body::-webkit-scrollbar {
   background: rgba(46, 204, 113, 0.9);
   color: white;
 }
-.course-badge.computer{
+.course-badge.computer {
   background-color: #2980b9;
   color: #f4f4f4;
 }
@@ -874,4 +869,145 @@ body::-webkit-scrollbar {
 }
 .time-slot.current {
   transition: background-color 1s linear;
+}
+/* our team */
+/* استایل های عمومی */
+
+/* بخش اساتید */
+.professors-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  position: relative;
+}
+
+.professors-title {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 40px;
+}
+
+.swiper {
+  padding: 30px 0;
+}
+
+.professor-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  margin: 0 10px;
+}
+
+.professor-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px;
+  display: block;
+}
+
+.professor-name {
+  text-align: center;
+  color: #34495e;
+  margin: 10px 0;
+}
+
+.professor-department {
+  text-align: center;
+  color: #7f8c8d;
+  font-size: 0.9em;
+}
+
+/* دکمه‌های ناوبری */
+.swiper-button-next,
+.swiper-button-prev {
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px;
+  color: #2c3e50;
+}
+
+.swiper-button-prev {
+  right: auto;
+  left: 10px;
+}
+
+.swiper-button-next {
+  left: auto;
+  right: 10px;
+}
+
+/* پنجره اطلاعات استاد */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  animation: modalOpen 0.3s ease;
+}
+
+@keyframes modalOpen {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #95a5a6;
+}
+
+.modal-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.modal-classes {
+  list-style: none;
+  padding: 0;
+}
+
+.modal-classes li {
+  background: #f8f9fa;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
 }
