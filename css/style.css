@@ -949,65 +949,112 @@ body::-webkit-scrollbar {
 }
 
 /* پنجره اطلاعات استاد */
-.modal-overlay {
+.professors-section {
+  padding: 2rem;
+  background: #f8f9fa;
+}
+
+.professors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.professor-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: var(--hover-effect);
+  position: relative;
+}
+
+.professor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.professor-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.professor-name {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.8));
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.show-more-btn {
+  display: block;
+  margin: 2rem auto;
+  padding: 1rem 3rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: var(--hover-effect);
+}
+
+.show-more-btn:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* مدال اساتید */
+.professors-modal {
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  display: none;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.9);
   z-index: 1000;
+  overflow-y: auto;
+  animation: fadeIn 0.3s;
 }
 
 .modal-content {
   background: white;
-  padding: 30px;
-  border-radius: 10px;
-  width: 90%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 15px;
+}
+
+/* مدال جزئیات استاد */
+.details-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
   max-width: 600px;
-  position: relative;
-  animation: modalOpen 0.3s ease;
+  z-index: 1001;
+  animation: slideIn 0.3s;
 }
 
-@keyframes modalOpen {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
-.close-btn {
-  position: absolute;
-  left: 20px;
-  top: 15px;
-  font-size: 24px;
-  cursor: pointer;
-  color: #95a5a6;
-}
-
-.modal-image {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  display: block;
-}
-
-.modal-classes {
-  list-style: none;
-  padding: 0;
-}
-
-.modal-classes li {
-  background: #f8f9fa;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 5px;
+@keyframes slideIn {
+  from {transform: translate(-50%, -100%);}
+  to {transform: translate(-50%, -50%);}
 }

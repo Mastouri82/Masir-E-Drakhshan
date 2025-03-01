@@ -552,31 +552,24 @@
       </div>
     </div>
     <!-- our team -->.
-    <div class="professors-container">
-      <h1 class="professors-title">اساتید دانشگاه</h1>
-
-      <!-- Slider main container -->
-      <div class="swiper">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper" id="professorsGrid"></div>
-        <!-- Navigation buttons -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-      </div>
-    </div>
-
-    <!-- پنجره اطلاعات استاد -->
-    <div class="modal-overlay" id="modal">
+    <section class="professors-section">
+      <h2 style="text-align: center; color: var(--primary-color);">اساتید برجسته</h2>
+      
+      <div class="professors-grid" id="mainProfessors"></div>
+      
+      <button class="show-more-btn" onclick="showAllProfessors()">نمایش همه اساتید</button>
+  </section>
+  
+  <!-- مدال همه اساتید -->
+  <div id="professorsModal" class="professors-modal">
       <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <img id="modalImage" class="modal-image" />
-        <h2 id="modalName"></h2>
-        <p id="modalDepartment"></p>
-        <p id="modalBio"></p>
-        <h3>کلاس‌های در حال تدریس:</h3>
-        <ul class="modal-classes" id="modalClasses"></ul>
+          <div class="professors-grid" id="allProfessors"></div>
       </div>
-    </div>
+  </div>
+  
+  <!-- مدال جزئیات استاد -->
+  <div id="professorDetails" class="details-modal"></div>
+  
     <!-- js sources -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
