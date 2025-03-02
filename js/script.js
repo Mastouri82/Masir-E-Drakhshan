@@ -869,7 +869,7 @@ function getCurrentDay() {
 
   console.log(today);
 
-  return days[today - 6];
+  return days[today+1];
 }
 // دریافت زمان فعلی
 function getCurrentTime() {
@@ -885,6 +885,7 @@ function getCurrentTime() {
 document.querySelector(
   ".schedule-title"
 ).textContent = `برنامه امروز (${getCurrentDay()})`;
+
 
 // تولید برنامه امروز
 
