@@ -1244,77 +1244,185 @@ const professors = [
   {
     id: 1,
     name: "دکتر احمدی",
-    image: "prof1.jpg",
+    image: "assets/web-dev.jpg",
     field: "برنامه‌نویسی پیشرفته",
     bio: "استاد برجسته حوزه برنامه‌نویسی با ۱۵ سال سابقه تدریس",
     classes: ["پایتون پیشرفته", "الگوریتم‌ها", "هوش مصنوعی"],
   },
   {
     id: 2,
-    name: "دکتر رضایی",
-    image: "prof2.jpg",
-    field: "هوش مصنوعی",
-    bio: "متخصص در حوزه یادگیری ماشین و شبکه‌های عصبی",
-    classes: ["یادگیری عمیق", "پردازش تصویر", "داده‌کاوی"],
+    name: "دکتر مملی",
+    image: "assets/web-dev.jpg",
+    field: "برنامه‌نویسی پیشرفته",
+    bio: "استاد برجسته حوزه برنامه‌نویسی با ۱۵ سال سابقه تدریس",
+    classes: ["پایتون پیشرفته", "الگوریتم‌ها", "هوش مصنوعی"],
   },
-  // اضافه کردن اساتید دیگر...
+  {
+    id: 3,
+    name: "دکتر احمدی",
+    image: "assets/mobi-img.jpg",
+    field: "برنامه‌نویسی پیشرفته",
+    bio: "استاد برجسته حوزه برنامه‌نویسی با ۱۵ سال سابقه تدریس",
+    classes: ["پایتون پیشرفته", "الگوریتم‌ها", "هوش مصنوعی"],
+  },
 ];
 
-// تولید کارت استاد
+// ایجاد کارت استاد
 function createProfessorCard(professor) {
   return `
       <div class="professor-card" onclick="showProfessorDetails(${professor.id})">
           <img src="${professor.image}" class="professor-image" alt="${professor.name}">
-          <h3 class="professor-name">${professor.name}</h3>
+          <div class="professor-name-overlay">
+              <h3 class="professor-name">${professor.name}</h3>
+          </div>
       </div>
   `;
 }
 
-// نمایش جزئیات استاد
-function showProfessorDetails(id) {
-  const professor = professors.find((p) => p.id === id);
-  const modal = document.getElementById("professorDetails");
-  modal.innerHTML = `
-      <h3>${professor.name}</h3>
-      <p>${professor.bio}</p>
-      <h4>کلاس‌ها:</h4>
-      <ul>
-          ${professor.classes.map((c) => `<li>${c}</li>`).join("")}
-      </ul>
-      <button onclick="closeDetailsModal()">بستن</button>
-  `;
+/// متغیرهای اسلایدر
+let currentSlide = 0;
+let autoSlideInterval;
+const mobileBreakpoint = 768;
 
-  modal.style.display = "block";
-}
-
-// نمایش همه اساتید
-function showAllProfessors() {
-  const modal = document.getElementById("professorsModal");
-  const container = document.getElementById("allProfessors");
-
-  container.innerHTML = professors.map((p) => createProfessorCard(p)).join("");
-  modal.style.display = "block";
-}
-
-// بستن مدال‌ها
-window.onclick = function (event) {
-  const professorsModal = document.getElementById("professorsModal");
-  const detailsModal = document.getElementById("professorDetails");
-
-  if (event.target === professorsModal) {
-    professorsModal.style.display = "none";
+// مقداردهی اولیه اسلایدر
+function initMobileSlider() {
+  if (window.innerWidth > mobileBreakpoint) {
+    // غیرفعال کردن اسلایدر در دسکتاپ
+    document.getElementById("sliderDots").style.display = "none";
+    return;
   }
-  if (event.target === detailsModal) {
-    detailsModal.style.display = "none";
-  }
-};
 
-function closeDetailsModal() {
-  document.getElementById("professorDetails").style.display = "none";
+  const container = document.getElementById("mainProfessors");
+  const dotsContainer = document.getElementById("sliderDots");
+
+  // ایجاد نقاط ناوشگر
+  dotsContainer.innerHTML = professors
+    .map(
+      (_, i) =>
+        `<div class="slider-dot ${
+          i === 0 ? "active" : ""
+        }" onclick="goToSlide(${i})"></div>`
+    )
+    .join("");
+
+  // فعال‌سازی اسلاید اول
+  Array.from(container.children).forEach((slide, index) => {
+    slide.classList.toggle("active", index === 0);
+  });
+
+  // شروع تایمر
+  nextSlide();
 }
+
+// تغییر به اسلاید بعدی
+function nextSlide() {
+  if (window.innerWidth > mobileBreakpoint) return;
+  const slides = document.querySelectorAll(".professor-card");
+  currentSlide = (currentSlide + 1) % slides.length;
+  updateSlider(slides);
+  setTimeout(nextSlide, 5000);
+}
+
+// پرش به اسلاید مشخص
+function goToSlide(index) {
+  const slides = document.querySelectorAll(".professor-card");
+  if (index < 0 || index >= slides.length) return;
+
+  currentSlide = index;
+  updateSlider(slides);
+}
+
+// به‌روزرسانی اسلایدر
+function updateSlider(slides) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle("active", i === currentSlide);
+  });
+
+  document.querySelectorAll(".slider-dot").forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentSlide);
+  });
+}
+
+// رویداد تغییر سایز صفحه
+window.addEventListener("resize", () => {
+  if (window.innerWidth <= mobileBreakpoint && !autoSlideInterval) {
+    initMobileSlider();
+  } else if (window.innerWidth > mobileBreakpoint) {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = null;
+    document.getElementById("sliderDots").style.display = "none";
+
+    // نمایش تمام اساتید در دسکتاپ
+    document.querySelectorAll(".professor-card").forEach((card) => {
+      card.style.opacity = "1";
+    });
+  }
+});
 
 // مقداردهی اولیه
 document.getElementById("mainProfessors").innerHTML = professors
-  .slice(0, 4)
   .map((p) => createProfessorCard(p))
   .join("");
+
+if (window.innerWidth <= mobileBreakpoint) {
+  initMobileSlider();
+}
+// مدیریت مدال‌ها
+function openModal(modalId) {
+  if (modalId === "allProfessorsModal") {
+    document.getElementById("allProfessors").innerHTML = professors
+      .map((p) => createProfessorCard(p))
+      .join("");
+  }
+  document.getElementById(modalId).style.display = "block";
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).style.display = "none";
+}
+
+function showProfessorDetails(id) {
+  const professor = professors.find((p) => p.id === id);
+  const modalContent = `
+      <div class="professor-details">
+          <h3>${professor.name}</h3>
+          <p class="field">${professor.field}</p>
+          <div class="bio">${professor.bio}</div>
+          <h4>کلاس‌ها:</h4>
+          <ul class="classes-list">
+              ${professor.classes.map((c) => `<li>${c}</li>`).join("")}
+          </ul>
+      </div>
+  `;
+
+  document.getElementById("professorDetailsContent").innerHTML = modalContent;
+  openModal("professorDetailsModal");
+}
+
+// رویدادهای کلیک
+window.onclick = function (event) {
+  if (event.target.classList.contains("modal")) {
+    event.target.style.display = "none";
+  }
+};
+
+// رویداد تغییر سایز صفحه
+window.addEventListener("resize", () => {
+  if (window.innerWidth <= mobileBreakpoint && !autoSlideInterval) {
+    initMobileSlider();
+  } else if (window.innerWidth > mobileBreakpoint) {
+    clearInterval(autoSlideInterval);
+    autoSlideInterval = null;
+  }
+});
+
+// مقداردهی اولیه
+
+document.getElementById("mainProfessors").innerHTML = professors
+  .slice(0, 3)
+  .map((p) => createProfessorCard(p))
+  .join("");
+
+if (window.innerWidth <= mobileBreakpoint) {
+  initMobileSlider();
+}

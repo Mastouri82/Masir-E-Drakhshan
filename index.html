@@ -553,23 +553,36 @@
     </div>
     <!-- our team -->.
     <section class="professors-section">
-      <h2 style="text-align: center; color: var(--primary-color);">اساتید برجسته</h2>
-      
+      <h2 class="section-title">اساتید برجسته</h2>
+
       <div class="professors-grid" id="mainProfessors"></div>
-      
-      <button class="show-more-btn" onclick="showAllProfessors()">نمایش همه اساتید</button>
-  </section>
-  
-  <!-- مدال همه اساتید -->
-  <div id="professorsModal" class="professors-modal">
+      <div class="slider-controls" id="sliderDots"></div>
+
+      <button class="show-more-btn" onclick="openModal('allProfessorsModal')">
+        مشاهده همه اساتید
+      </button>
+    </section>
+
+    <!-- مدال همه اساتید -->
+    <div id="allProfessorsModal" class="modal">
       <div class="modal-content">
-          <div class="professors-grid" id="allProfessors"></div>
+        <span class="close-btn" onclick="closeModal('allProfessorsModal')"
+          >&times;</span
+        >
+        <div class="professors-grid" id="allProfessors"></div>
+        <div class="slider-controls" id="sliderDots"></div>
       </div>
-  </div>
-  
-  <!-- مدال جزئیات استاد -->
-  <div id="professorDetails" class="details-modal"></div>
-  
+    </div>
+
+    <!-- مدال جزئیات استاد -->
+    <div id="professorDetailsModal" class="modal">
+      <div class="modal-content" style="max-width: 600px">
+        <span class="close-btn" onclick="closeModal('professorDetailsModal')"
+          >&times;</span
+        >
+        <div id="professorDetailsContent"></div>
+      </div>
+    </div>
     <!-- js sources -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

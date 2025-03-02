@@ -22,6 +22,9 @@ body::-webkit-scrollbar {
   --warning-color: #f39c12;
   --danger-color: #e74c3c;
   --success-color: #2ecc71;
+  --primary-color-other-prof: #2c3e50;
+  --secondary-color-other-prof: #e74c3c;
+  --hover-effect: all 0.3s ease;
 }
 /* ---------------------------------------------------------- */
 /* navbar */
@@ -871,156 +874,111 @@ body::-webkit-scrollbar {
   transition: background-color 1s linear;
 }
 /* our team */
-/* استایل های عمومی */
 
-/* بخش اساتید */
-.professors-container {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 0 20px;
+/* پنجره اطلاعات استاد */
+
+.professors-section {
+  padding: 3rem 1rem;
+  background: #f8f9fa;
+  min-height: 100vh;
+}
+
+.section-title {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
-.professors-title {
-  text-align: center;
-  color: #2c3e50;
-  margin-bottom: 40px;
+.section-title::after {
+  content: "";
+  width: 100px;
+  height: 3px;
+  background: #e74c3c;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.swiper {
-  padding: 30px 0;
-}
-
-.professor-card {
-  background: white;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-  margin: 0 10px;
-}
-
-.professor-image {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 15px;
-  display: block;
-}
-
-.professor-name {
-  text-align: center;
-  color: #34495e;
-  margin: 10px 0;
-}
-
-.professor-department {
-  text-align: center;
-  color: #7f8c8d;
-  font-size: 0.9em;
-}
-
-/* دکمه‌های ناوبری */
-.swiper-button-next,
-.swiper-button-prev {
-  background: white;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 20px;
-  color: #2c3e50;
-}
-
-.swiper-button-prev {
-  right: auto;
-  left: 10px;
-}
-
-.swiper-button-next {
-  left: auto;
-  right: 10px;
-}
-
-/* پنجره اطلاعات استاد */
-.professors-section {
-  padding: 2rem;
-  background: #f8f9fa;
-}
-
+/* گرید اساتید */
 .professors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
-  padding: 2rem 0;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* کارت استاد */
 .professor-card {
   background: white;
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: var(--hover-effect);
+  transition: all 0.3s ease;
   position: relative;
 }
 
 .professor-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .professor-image {
   width: 100%;
-  height: 300px;
+  height: 350px;
   object-fit: cover;
-  border-bottom: 3px solid var(--secondary-color);
+  border-bottom: 3px solid #e74c3c;
 }
 
-.professor-name {
+.professor-name-overlay {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
-  color: white;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   padding: 1.5rem;
   text-align: center;
-  font-size: 1.2rem;
-  margin: 0;
 }
 
+.professor-name {
+  color: white;
+  font-size: 1.3rem;
+  margin: 0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* دکمه نمایش بیشتر */
 .show-more-btn {
   display: block;
   margin: 2rem auto;
   padding: 1rem 3rem;
-  background: var(--primary-color);
+  background: #2c3e50;
   color: white;
   border: none;
   border-radius: 30px;
   cursor: pointer;
-  transition: var(--hover-effect);
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
 }
 
 .show-more-btn:hover {
-  background: var(--secondary-color);
+  background: #e74c3c;
   transform: scale(1.05);
 }
 
-/* مدال اساتید */
-.professors-modal {
+/* مدال ها */
+.modal {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 1000;
   overflow-y: auto;
   animation: fadeIn 0.3s;
@@ -1032,29 +990,87 @@ body::-webkit-scrollbar {
   margin: 2rem auto;
   padding: 2rem;
   border-radius: 15px;
+  position: relative;
 }
 
-/* مدال جزئیات استاد */
-.details-modal {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  max-width: 600px;
-  z-index: 1001;
-  animation: slideIn 0.3s;
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #2c3e50;
 }
 
+/* اسلایدر موبایل */
+/* استایل اسلایدر موبایل */
+@media (max-width: 768px) {
+  .professors-grid {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    padding: 0;
+    position: relative;
+  }
+
+  .professor-card {
+    flex: 0 0 100%;
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute;
+    width: 100%;
+  }
+
+  .professor-card.active {
+    opacity: 1;
+    position: relative;
+  }
+
+  .slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .slider-dot.active {
+    background: #e74c3c;
+    transform: scale(1.3);
+  }
+}
+/* انیمیشن ها */
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes slideIn {
-  from {transform: translate(-50%, -100%);}
-  to {transform: translate(-50%, -50%);}
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@media (min-width: 769px) {
+  .professors-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
 }
