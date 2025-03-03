@@ -1,0 +1,79 @@
+/* announcement */
+.announcement-section {
+    background: #f8f9fa;
+    padding: 40px 0;
+    border-radius: 10px;
+    margin: 40px 0;
+  }
+  
+  .announcement-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+    cursor: default;
+  }
+  
+  .announcement-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .announcement-card.warning {
+    border-left-color: var(--warning-color);
+  }
+  
+  .announcement-card.danger {
+    border-left-color: var(--danger-color);
+  }
+  
+  .announcement-card.success {
+    border-left-color: var(--success-color);
+  }
+  
+  .announcement-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-left: 15px;
+  }
+  
+  .announcement-icon.warning {
+    background: var(--warning-color);
+    color: #fff;
+  }
+  
+  .announcement-icon.danger {
+    background: var(--danger-color);
+    color: #fff;
+  }
+  
+  .announcement-icon.success {
+    background: var(--success-color);
+    color: #fff;
+  }
+  
+  .announcement-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .announcement-date {
+    font-size: 0.9rem;
+    color: #95a5a6;
+    margin-bottom: 15px;
+  }
+  
+  .announcement-description {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    line-height: 1.6;
+  }

@@ -552,37 +552,7 @@
       </div>
     </div>
     <!-- our team -->.
-    <section class="professors-section">
-      <h2 class="section-title">اساتید برجسته</h2>
-
-      <div class="professors-grid" id="mainProfessors"></div>
-      <div class="slider-controls" id="sliderDots"></div>
-
-      <button class="show-more-btn" onclick="openModal('allProfessorsModal')">
-        مشاهده همه اساتید
-      </button>
-    </section>
-
-    <!-- مدال همه اساتید -->
-    <div id="allProfessorsModal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn" onclick="closeModal('allProfessorsModal')"
-          >&times;</span
-        >
-        <div class="professors-grid" id="allProfessors"></div>
-        <div class="slider-controls" id="sliderDots"></div>
-      </div>
-    </div>
-
-    <!-- مدال جزئیات استاد -->
-    <div id="professorDetailsModal" class="modal">
-      <div class="modal-content" style="max-width: 600px">
-        <span class="close-btn" onclick="closeModal('professorDetailsModal')"
-          >&times;</span
-        >
-        <div id="professorDetailsContent"></div>
-      </div>
-    </div>
+   
     <!-- js sources -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -596,6 +566,6 @@
     ></script>
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper@8.4.5/swiper-bundle.min.js"></script>
-    <script src="./js/script.js"></script>
+    <script src="./js/main.js" type="module"></script>
   </body>
 </html>
