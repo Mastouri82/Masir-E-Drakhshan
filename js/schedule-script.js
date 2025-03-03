@@ -780,7 +780,7 @@ const scheduleData = {
 // گرفتن زمان فعلی از مرورگر
 function getCurrentDay() {
   const days = ["شنبه", "یکشنبه", "دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه"];
-  const today = new Date().getDay(); 
+  const today = new Date().getDay();
   return days[today + 1];
 }
 // دریافت زمان فعلی
@@ -874,28 +874,33 @@ function generateFullSchedule() {
 
   container.innerHTML = html;
 }
-function showCourseDetails(hour, day) {
+console.log("uiyftyugihui");
+
+export function showCourseDetails(hour, day) {
+
+    console.log("تابع showCourseDetails فراخوانی شد!");
+
+
   // بررسی وجود مدال؛ اگر وجود ندارد، آن را به صفحه اضافه می‌کنیم
-  if (!document.getElementById("courseModal")) {
-    const modalHtml = `
-          <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
-             <div class="modal-dialog">
-               <div class="modal-content">
-                 <div class="modal-header">
-                   <h5 class="modal-title" id="courseModalLabel">جزئیات کلاس</h5>
-                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                 </div>
-                 <div class="modal-body">
-                   <!-- اطلاعات کلاس‌ها اینجا نمایش داده می‌شود -->
-                 </div>
-                 <div class="modal-footer">
-                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
-                 </div>
-               </div>
-             </div>
+  const modalHtml = `
+    <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="courseModalLabel">جزئیات کلاس</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          `;
-    // document.body.insertAdjacentHTML("beforeend", modalHtml);
+          <div class="modal-body">
+            <!-- اطلاعات کلاس‌ها اینجا نمایش داده می‌شود -->
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  `;
+
+  if (!document.getElementById("courseModal")) {
+    document.body.insertAdjacentHTML("beforeend", modalHtml);
   }
 
   // یافتن کلاس‌های موجود در ساعت و روز مورد نظر
@@ -936,7 +941,124 @@ function showCourseDetails(hour, day) {
     new bootstrap.Modal(document.getElementById("courseModal")).show();
   }
 }
-function updateClassColors() {}
+function updateClassColors() {
+  const currentTime = getCurrentTime();
+  const currentMinutes = currentTime.hour * 60 + currentTime.minute;
+
+  document.querySelectorAll(".time-slot").forEach((slot) => {
+    const hourLabel = slot.querySelector(".time-label").textContent;
+    const startHour = parseInt(hourLabel.split(":")[0]);
+    const classStart = startHour * 60;
+    const classDuration = 60;
+    const classEnd = classStart + classDuration;
+    const elapsedTime = currentMinutes - classStart;
+
+    // محاسبه پیشرفت زمان به صورت درصدی (۰ تا ۱)
+    const progress = Math.min(elapsedTime / classDuration, 1);
+
+    // تعریف مراحل رنگ‌ها با استفاده از Gradient
+    const colorStops = [
+      { offset: 0.0, color: [255, 255, 0] }, // زرد (شروع)
+      { offset: 0.5, color: [255, 165, 0] }, // نارنجی
+      { offset: 1.0, color: [255, 0, 0] }, // قرمز (پایان)
+    ];
+
+    // پیدا کردن رنگ متناسب با پیشرفت
+    let targetColor = [238, 238, 238]; // پیش‌فرض: خاکستری
+
+    if (currentMinutes >= classStart && currentMinutes <= classEnd) {
+      for (let i = 1; i < colorStops.length; i++) {
+        if (progress <= colorStops[i].offset) {
+          const prevStop = colorStops[i - 1];
+          const currStop = colorStops[i];
+          const localProgress =
+            (progress - prevStop.offset) / (currStop.offset - prevStop.offset);
+
+          targetColor = prevStop.color.map(
+            (channel, index) =>
+              channel + (currStop.color[index] - channel) * localProgress
+          );
+          break;
+        }
+      }
+    } else if (currentMinutes > classEnd) {
+      targetColor = [220, 53, 69]; // قرمز تیره پس از پایان
+    }
+
+    // اعمال رنگ با انیمیشن
+    slot.style.backgroundColor = `rgb(${targetColor.join(",")})`;
+
+    // محاسبه رنگ متن
+    const luminance =
+      (0.299 * targetColor[0] +
+        0.587 * targetColor[1] +
+        0.114 * targetColor[2]) /
+      255;
+    slot.style.color = luminance > 0.6 ? "#2c3e50" : "white";
+  });
+}
+// function showCourseDetails(hour, day) {
+//   // بررسی وجود مدال؛ اگر وجود ندارد، آن را به صفحه اضافه می‌کنیم
+//   if (!document.getElementById("courseModal")) {
+//     const modalHtml = `
+//           <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+//              <div class="modal-dialog">
+//                <div class="modal-content">
+//                  <div class="modal-header">
+//                    <h5 class="modal-title" id="courseModalLabel">جزئیات کلاس</h5>
+//                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//                  </div>
+//                  <div class="modal-body">
+//                    <!-- اطلاعات کلاس‌ها اینجا نمایش داده می‌شود -->
+//                  </div>
+//                  <div class="modal-footer">
+//                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">بستن</button>
+//                  </div>
+//                </div>
+//              </div>
+//           </div>
+//           `;
+//     document.body.insertAdjacentHTML("beforeend", modalHtml);
+//   }
+
+//   // یافتن کلاس‌های موجود در ساعت و روز مورد نظر
+//   const courses =
+//     scheduleData.برنامه.find((c) => c.day === day && c.hour === hour)
+//       ?.classes || [];
+
+//   if (courses.length > 0) {
+//     const modalBody = document.querySelector("#courseModal .modal-body");
+//     modalBody.innerHTML = courses
+//       .map(
+//         (c) => `
+//               <div class="mb-4 p-3 border rounded">
+//                   <h6 class="mb-3">${c.course}</h6>
+//                   <ul class="list-group">
+//                       <li class="list-group-item"><strong>نوع کلاس:</strong> ${
+//                         c.type === "art"
+//                           ? "هنر"
+//                           : c.type === "language"
+//                           ? "زبان"
+//                           : c.type === "computer"
+//                           ? "کامپیوتر"
+//                           : ""
+//                       }</li>
+//                       <li class="list-group-item"><strong>استاد:</strong> ${
+//                         c.professor
+//                       }</li>
+//                       <li class="list-group-item"><strong>مکان:</strong> ${
+//                         c.location
+//                       }</li>
+//                   </ul>
+//               </div>
+//           `
+//       )
+//       .join("");
+
+//     // نمایش مدال با استفاده از Bootstrap
+//     new bootstrap.Modal(document.getElementById("courseModal")).show();
+//   }
+// }
 // اجرای اولیه
 generateTodaySchedule();
 generateFullSchedule();

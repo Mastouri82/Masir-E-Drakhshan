@@ -1,70 +1,82 @@
 /* schedule */
-
 /* استایل‌های پایه */
 .today-schedule {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin: 20px 0;
-    padding: 20px;
-    animation: slideInUp 0.5s ease;
-  }
-  
-  .schedule-title {
-    font-size: 1.4rem;
-    color: var(--primary-blue);
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-right: 1rem;
-    animation: fadeIn 0.8s ease;
-  }
-  
-  .time-slots-container {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-  
-  .time-slot {
-    min-width: 100px;
-    padding: 15px;
-    border-radius: 10px;
-    background: #f8f9fa;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: scaleIn 0.4s ease;
-    flex-shrink: 0;
-    position: relative;
-    border: 2px solid transparent;
-  }
-  
-  .time-slot.active {
-    background: var(--primary-blue);
-    color: white;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
-  }
-  
-  .time-slot:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .time-label {
-    font-size: 0.9rem;
-  
-    opacity: 0.8;
-  }
-  
-  .course-name {
-    font-size: 0.95rem;
-    font-weight: 500;
-  }
-  
-  /* استایل‌های موبایل */
-  @media (max-width: 768px) {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin: 20px 0;
+  padding: 20px;
+  animation: slideInUp 0.5s ease;
+}
+
+.schedule-title {
+  font-size: 1.4rem;
+  color: var(--primary-blue);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-right: 1rem;
+  animation: fadeIn 0.8s ease;
+}
+
+.time-slots-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+.time-slots-container::-webkit-scrollbar {
+  height: 7px;
+}
+.time-slots-container::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #2980b9;
+}
+.modal-body::-webkit-scrollbar {
+  width: 7px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background-color: #2980b9;
+}
+.time-slot {
+  min-width: 115px;
+  padding: 15px;
+  border-radius: 10px;
+  background: #f8f9fa;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: scaleIn 0.4s ease;
+  flex-shrink: 0;
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.time-slot.active {
+  background: var(--primary-blue);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.time-slot:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.time-label {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.course-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* استایل‌های موبایل */
+/* @media (max-width: 768px) {
     .time-slots-container {
       flex-direction: column;
       overflow-x: visible;
@@ -82,220 +94,132 @@
     .schedule-title {
       font-size: 1.2rem;
     }
-  }
-  
-  /* انیمیشن‌ها */
-  @keyframes slideInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes scaleIn {
-    from {
-      transform: scale(0.9);
-      opacity: 0;
-    }
-    to {
-      transform: scale(1);
-      opacity: 1;
-    }
-  }
-  
-  /* جدول کامل */
-  .full-schedule-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 8px;
-    animation: fadeIn 0.6s ease;
-  }
-  
-  .full-schedule-table th {
-    background: var(--primary-blue);
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    font-size: 0.95rem;
-  }
-  
-  .full-schedule-table td {
-    background: #f8f9fa;
-    padding: 12px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .full-schedule-table td::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(52, 152, 219, 0.1);
+  } */
+
+/* انیمیشن‌ها */
+@keyframes slideInUp {
+  from {
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transform: translateY(20px);
   }
-  
-  .full-schedule-table td:hover::before {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
   }
-  
-  .full-schedule-table td.active {
-    background: var(--primary-blue);
-    color: white;
-    transform: scale(1.02);
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
   }
-  
-  .today-schedule {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin: 20px 0;
-    padding: 20px;
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .time-slots-container {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 10px;
+}
+
+/* جدول کامل */
+.full-schedule-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 8px;
+  animation: fadeIn 0.6s ease;
+}
+
+.full-schedule-table th {
+  background: var(--primary-blue);
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.full-schedule-table td {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.full-schedule-table td::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(52, 152, 219, 0.1);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.full-schedule-table td:hover::before {
+  opacity: 1;
+}
+
+.full-schedule-table td.active {
+  background: var(--primary-blue);
+  color: white;
+  transform: scale(1.02);
+}
+
+.time-slot.future {
+  background: #f8f9fa;
+}
+
+.time-slot.current {
+  background-size: 200% 100%;
+  animation: progressBackground 1s linear forwards;
+  transition: background-color 1s linear;
+}
+
+@keyframes progressBackground {
+  from {
+    background-position: 100% 0;
   }
-  
-  .time-slot {
-    min-width: 120px;
-    padding: 15px;
-    border-radius: 10px;
-    background: #f8f9fa;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    border: 2px solid transparent;
+  to {
+    background-position: 0% 0;
   }
-  
-  .time-slot.active {
-    border-color: var(--primary-color);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.2);
-  }
-  
-  .course-badge {
-    display: block;
-    padding: 5px;
-    margin: 3px 0;
-    border-radius: 5px;
-    font-size: 0.9rem;
-  }
-  
-  .course-badge.art {
-    background: #f1c40f;
-    color: #2c3e50;
-  }
-  
-  .course-badge.language {
-    background: #2ecc71;
-    color: white;
-  }
-  .today-schedule {
-    background: #fff;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    margin: 20px 0;
-    padding: 20px;
-  }
-  
-  .time-slots-container {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-  
-  .time-slot {
-    min-width: 120px;
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .time-slot.future {
-    background: #f8f9fa;
-  }
-  
-  .time-slot.current {
-    background-size: 200% 100%;
-    animation: progressBackground 1s linear forwards;
-  }
-  
-  @keyframes progressBackground {
-    from {
-      background-position: 100% 0;
-    }
-    to {
-      background-position: 0% 0;
-    }
-  }
-  
-  .course-badge {
-    display: block;
-    padding: 5px;
-    margin: 3px 0;
-    border-radius: 5px;
-    font-size: 0.9rem;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .course-badge.art {
-    background: rgba(241, 196, 15, 0.9);
-    color: #2c3e50;
-  }
-  
-  .course-badge.language {
-    background: rgba(46, 204, 113, 0.9);
-    color: white;
-  }
-  .course-badge.computer {
-    background-color: #2980b9;
-    color: #f4f4f4;
-  }
-  .time-label {
-    font-weight: bold;
-    margin-bottom: 10px;
-    position: relative;
-    z-index: 1;
-  }
-  
-  /* .current .time-label {
-    color: white;
-  } */
-  
-  .current .course-badge.art {
-    color: black;
-  }
-  .time-slot.current {
-    transition: background-color 1s linear;
-  }
+}
+
+.course-badge {
+  display: block;
+  padding: 5px;
+  margin: 3px 0;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  position: relative;
+  z-index: 1;
+}
+
+.course-badge.art {
+  background: rgba(241, 196, 15, 0.9);
+  color: #2c3e50;
+}
+
+.course-badge.language {
+  background: rgba(46, 204, 113, 0.9);
+  color: white;
+}
+
+.course-badge.computer {
+  background-color: #2980b9;
+  color: #f4f4f4;
+}
+
+.current .course-badge.art {
+  color: black;
+}

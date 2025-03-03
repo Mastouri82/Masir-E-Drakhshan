@@ -1,6 +1,10 @@
 
 import "./header-script.js";
 import "./schedule-script.js";
+import { showCourseDetails } from './schedule-script.js';
+
+window.showCourseDetails = showCourseDetails; // این خط تابع را در window قرار می‌دهد تا در HTML هم قابل دسترسی باشد
+
 import "./ourTeam-script.js";
 
 
