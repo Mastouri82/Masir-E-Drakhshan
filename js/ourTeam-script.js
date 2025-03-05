@@ -11,7 +11,7 @@ const ourTeamWrp = document.querySelector(".our-team-wrp");
 ourTeamWrp.insertAdjacentHTML(
   "beforeend",
     `<div
-          class="card col-3 overflow-hidden border-0 rounded-2 bg-transparent"
+          class="card col-6 col-md-4 col-lg-3 overflow-hidden border-0 rounded-2 bg-transparent"
         >
           <div class="card-body position-relative">
             <div
