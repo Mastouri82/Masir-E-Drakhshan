@@ -13,11 +13,11 @@ ourTeamWrp.insertAdjacentHTML(
     `<div
           class="card col-6 col-md-4 col-lg-3 overflow-hidden border-0 rounded-2 bg-transparent"
         >
-          <div class="card-body position-relative">
+          <div class="card-body position-relative h-100">
             <div
-              class="primery-face position-absolute top-0 start-0 w-100 h-100"
+              class="primery-face position-absolute start-0 top-0 w-100 h-100"
             >
-              <div class="w-100 position-relative">
+              <div class="w-100 position-relative h-100">
                 <img class="img-fluid rounded" src="${masteries[0].image}" alt="${masteries[0].lastName}" />
                 <div
                   class="primery-mastery-info position-absolute bottom-0 ps-2 text-white w-100 rounded-bottom"
@@ -28,7 +28,7 @@ ourTeamWrp.insertAdjacentHTML(
               </div>
             </div>
             <div
-              class="secondary-face position-absolute top-0 start-0 w-100 h-100"
+              class="secondary-face position-absolute start-0 w-100 h-100"
             >
               <div class="position-relative h-100 w-100 rounded-3">
                 <div class="avatar-bg h-25 bg-info rounded-3">
@@ -53,7 +53,7 @@ ourTeamWrp.insertAdjacentHTML(
 
                   <p class="mt-3">
                     mobibahrami@gmail.com
-                    <i class="fa-solid fa-envelope fs-4"></i>
+                    <i class="fa-solid fa-envelope fs-4 d-none d-md-inline-block"></i>
                   </p>
                 </div>
               </div>

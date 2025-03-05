@@ -9,14 +9,15 @@
     transform-style:preserve-3d ;
     transition: transform 0.5s;
 }
-.card-body{
+/* .card-body{
   transform: rotateY(180deg);
-}
+} */
 .primery-face,.secondary-face{
   backface-visibility: hidden;
 }
 .secondary-face{
   transform: rotateY(180deg);
+  background-color: #1e3c72;
 }
 .primery-mastery-info {
   background: rgb(0, 0, 0);
@@ -25,6 +26,7 @@
     rgba(0, 0, 0, 0.4) 30%,
     rgba(0, 0, 0, 0.8) 60%
   );
+  
 }
 
 .img-avatar {
