@@ -38,7 +38,7 @@
 
 .modal-body::-webkit-scrollbar-thumb {
   border-radius: 3px;
-  background-color: #2980b9;
+  background-color: #c0c0c0;
 }
 .time-slot {
   min-width: 115px;
