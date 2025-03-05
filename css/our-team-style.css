@@ -9,9 +9,9 @@
     transform-style:preserve-3d ;
     transition: transform 0.5s;
 }
-/* .card-body{
+.card-body{
   transform: rotateY(180deg);
-} */
+}
 .primery-face,.secondary-face{
   backface-visibility: hidden;
 }
