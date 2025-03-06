@@ -21,7 +21,7 @@ const masteries = [
 ];
 const ourTeamWrp = document.querySelector(".our-team-wrp");
 // افزودن اساتید به صفحه
-masteries.forEach((master,index) => {
+masteries.some((master, index) => {
   ourTeamWrp.insertAdjacentHTML(
     "beforeend",
     `<div
@@ -75,7 +75,7 @@ masteries.forEach((master,index) => {
           </div>
         </div>`
   );
-  if (window.innerWidth < 768 && index == 1) return;
+  if (window.innerWidth < 768 && index == 1) return true;
 });
 const cards = document.querySelectorAll(".cards");
 cards.forEach((card) => {
