@@ -222,3 +222,19 @@
   .read-more-btn i {
     margin-right: 5px;
   }
+  .swiper-slide:nth-child(2n) {
+    width: 40%;
+  }
+
+  .swiper-slide:nth-child(2n+1) {
+    width: 50%;
+  }
+  @media screen and (max-width: 768px) {
+    .swiper-slide:nth-child(2n) {
+      width: 70%;
+    }
+  
+    .swiper-slide:nth-child(2n+1) {
+      width: 80%;
+    }
+  }

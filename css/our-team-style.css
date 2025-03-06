@@ -4,6 +4,13 @@
   background-color: transparent;
   perspective: 500px;
 }
+
+@media screen and (max-width: 768px) {
+  .cards {
+    height: 230px;
+  }
+  
+}
 .cards:hover .card-body {
     transform: rotateY(180deg);
   }

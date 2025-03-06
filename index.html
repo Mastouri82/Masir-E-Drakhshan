@@ -49,16 +49,16 @@
         <div class="collapse navbar-collapse z-1" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link active" href="#">خانه</a>
+              <a class="nav-link active" href="index.html">خانه</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">دوره‌ها</a>
+              <a class="nav-link" href="#course-sec">دوره‌ها</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">مقالات</a>
+              <a class="nav-link" href="#artcle-sec">مقالات</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">تماس</a>
+              <a class="nav-link" href="#">درباره ما</a>
             </li>
           </ul>
         </div>
@@ -87,12 +87,17 @@
     </section>
 
     <!-- courses -->
-    <section class="my-4 courses-wrp">
+    <section class="my-4 courses-wrp shadow">
       <div class="container p-3">
-        <h2 class="text-center mb-5">دوره‌های آموزشی</h2>
+        <h2
+          class="text-center mx-auto mb-5 w-75 pb-3 border-bottom"
+          id="course-sec"
+        >
+          دوره‌های آموزشی
+        </h2>
 
         <!-- Slider main container -->
-        <div class="swiper">
+        <div class="swiper ">
           <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
             <!-- Slides -->
@@ -274,9 +279,14 @@
     </section>
 
     <!-- artcle -->
-    <section class="my-4 courses-wrp">
+    <section class="bg-body my-4 shadow">
       <div class="container p-3">
-        <h2 class="text-center mb-5">مقالات</h2>
+        <h2
+          class="text-center mx-auto mb-5 w-75 pb-3 border-bottom"
+          id="artcle-sec"
+        >
+          مقالات
+        </h2>
 
         <!-- Slider main container -->
         <div class="swiper">
@@ -420,7 +430,9 @@
     <!-- announcement -->
     <section class="announcement-section">
       <div class="container">
-        <h2 class="text-center mb-5">اطلاعیه‌ها و رویدادها</h2>
+        <h2 class="text-center mb-5 mx-auto w-75 pb-3 border-bottom">
+          اطلاعیه‌ها و رویدادها
+        </h2>
 
         <div class="row">
           <!-- اطلاعیه 1 -->
@@ -502,19 +514,24 @@
     </section>
 
     <!-- schedule -->
-    <div class="container py-4">
-      <div class="today-schedule">
-        <h3 class="schedule-title">برنامه امروز</h3>
-        <div class="time-slots-container" id="todaySchedule"></div>
-      </div>
+    <div class="bg-body py-4 mb-4 shadow">
+      <div class="container ">
+        <h2 class="text-center mb-5 w-75 pb-3 border-bottom mx-auto">
+          برنامه هفتگی
+        </h2>
+        <div class="today-schedule">
+          <h3 class="schedule-title">برنامه امروز</h3>
+          <div class="time-slots-container" id="todaySchedule"></div>
+        </div>
 
-      <button
-        class="btn btn-primary w-100 py-2"
-        data-bs-toggle="modal"
-        data-bs-target="#fullScheduleModal"
-      >
-        📅 نمایش کل برنامه هفتگی
-      </button>
+        <button
+          class="btn btn-primary w-100 py-2"
+          data-bs-toggle="modal"
+          data-bs-target="#fullScheduleModal"
+        >
+          📅 نمایش کل برنامه هفتگی
+        </button>
+      </div>
     </div>
 
     <!-- Modal برنامه کامل -->
@@ -550,14 +567,320 @@
         </div>
       </div>
     </div>
-    <!-- our team -->.
-    <div class="container mt-5">
-      <h2 class="text-center mb-5">تیم ما</h2>
-      <div class="our-team-wrp row">
+    <!-- our team -->
+    <div class="bg-body p-3 shadow">
+      <div class="container">
+        <h2 class="text-center mx-auto mb-5 w-75 pb-3 border-bottom">تیم ما</h2>
+        <div class="our-team-wrp row shadow p-1 py-3 rounded-3">
+          <div
+            class="cards col-6 col-md-4 col-lg-3 overflow-hidden rounded-2 bg-transparent"
+          >
+            <div class="card-body position-relative h-100">
+              <div
+                class="primery-face position-absolute start-0 top-0 w-100 h-100"
+              >
+                <div class="w-100 position-relative h-100">
+                  <img
+                    class="w-100 h-100 rounded"
+                    src="./assets/mobi-img.jpg"
+                    alt="${master.lastName}"
+                  />
+                  <div
+                    class="primery-mastery-info position-absolute bottom-0 ps-2 text-white w-100 rounded-bottom"
+                  >
+                    <h5 class="m-0">استاد بهرامی</h5>
+                    <p class="mb-1">دبیر زبان</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="secondary-face position-absolute start-0 top-0 w-100 h-100 rounded-3"
+              >
+                <div class="position-relative h-100 w-100">
+                  <div class="avatar-bg h-25 bg-info rounded-3">
+                    <img
+                      class="img-avatar rounded-circle position-absolute"
+                      src="./assets/mobi-img.jpg"
+                      alt="بهرامی"
+                      width="80px"
+                      height="80px"
+                    />
+                  </div>
+                  <div class="mt-5 text-center">
+                    <h4>استاد مبینا بهرامی</h4>
+                    <p>مدرس زبان انگلیسی</p>
+                    <div class="connect-to-mastery mt-1">
+                      <a href=""><i class="fa-brands fa-telegram fs-3"></i></a>
+                      <a href=""
+                        ><i class="fa-brands fa-instagram fs-3 mx-2"></i
+                      ></a>
+                      <a href=""><i class="fa-solid fa-phone fs-4"></i></a>
+                    </div>
+
+                    <p class="mt-2">
+                      mobibahrami@gmail.com
+                      <i
+                        class="fa-solid fa-envelope fs-4 d-none d-md-inline-block"
+                      ></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="cards col-6 col-md-4 col-lg-3 d-none d-md-block overflow-hidden rounded-2 bg-transparent"
+          >
+            <div class="card-body position-relative h-100">
+              <div
+                class="primery-face position-absolute start-0 top-0 w-100 h-100"
+              >
+                <div class="w-100 position-relative h-100">
+                  <img
+                    class="w-100 h-100 rounded"
+                    src="./assets/mobi-img.jpg"
+                    alt="${master.lastName}"
+                  />
+                  <div
+                    class="primery-mastery-info position-absolute bottom-0 ps-2 text-white w-100 rounded-bottom"
+                  >
+                    <h5 class="m-0">استاد بهرامی</h5>
+                    <p class="mb-1">دبیر زبان</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="secondary-face position-absolute start-0 top-0 w-100 h-100 rounded-3"
+              >
+                <div class="position-relative h-100 w-100">
+                  <div class="avatar-bg h-25 bg-info rounded-3">
+                    <img
+                      class="img-avatar rounded-circle position-absolute"
+                      src="./assets/mobi-img.jpg"
+                      alt="بهرامی"
+                      width="80px"
+                      height="80px"
+                    />
+                  </div>
+                  <div class="mt-5 text-center">
+                    <h4>استاد مبینا بهرامی</h4>
+                    <p>مدرس زبان انگلیسی</p>
+                    <div class="connect-to-mastery mt-1">
+                      <a href=""><i class="fa-brands fa-telegram fs-3"></i></a>
+                      <a href=""
+                        ><i class="fa-brands fa-instagram fs-3 mx-2"></i
+                      ></a>
+                      <a href=""><i class="fa-solid fa-phone fs-4"></i></a>
+                    </div>
+
+                    <p class="mt-2">
+                      mobibahrami@gmail.com
+                      <i
+                        class="fa-solid fa-envelope fs-4 d-none d-md-inline-block"
+                      ></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="cards col-6 col-md-4 col-lg-3 d-none d-lg-block overflow-hidden rounded-2 bg-transparent"
+          >
+            <div class="card-body position-relative h-100">
+              <div
+                class="primery-face position-absolute start-0 top-0 w-100 h-100"
+              >
+                <div class="w-100 position-relative h-100">
+                  <img
+                    class="w-100 h-100 rounded"
+                    src="./assets/mobi-img.jpg"
+                    alt="${master.lastName}"
+                  />
+                  <div
+                    class="primery-mastery-info position-absolute bottom-0 ps-2 text-white w-100 rounded-bottom"
+                  >
+                    <h5 class="m-0">استاد بهرامی</h5>
+                    <p class="mb-1">دبیر زبان</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="secondary-face position-absolute start-0 top-0 w-100 h-100 rounded-3"
+              >
+                <div class="position-relative h-100 w-100">
+                  <div class="avatar-bg h-25 bg-info rounded-3">
+                    <img
+                      class="img-avatar rounded-circle position-absolute"
+                      src="./assets/mobi-img.jpg"
+                      alt="بهرامی"
+                      width="80px"
+                      height="80px"
+                    />
+                  </div>
+                  <div class="mt-5 text-center">
+                    <h4>استاد مبینا بهرامی</h4>
+                    <p>مدرس زبان انگلیسی</p>
+                    <div class="connect-to-mastery mt-1">
+                      <a href=""><i class="fa-brands fa-telegram fs-3"></i></a>
+                      <a href=""
+                        ><i class="fa-brands fa-instagram fs-3 mx-2"></i
+                      ></a>
+                      <a href=""><i class="fa-solid fa-phone fs-4"></i></a>
+                    </div>
+
+                    <p class="mt-2">
+                      mobibahrami@gmail.com
+                      <i
+                        class="fa-solid fa-envelope fs-4 d-none d-md-inline-block"
+                      ></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="cards col-6 col-md-4 col-lg-3 overflow-hidden rounded-2 bg-transparent"
+          >
+            <div class="card-body position-relative h-100">
+              <div
+                class="primery-face position-absolute start-0 top-0 w-100 h-100"
+              >
+                <div class="w-100 position-relative h-100">
+                  <img
+                    class="w-100 h-100 rounded"
+                    src="./assets/mobi-img.jpg"
+                    alt="${master.lastName}"
+                  />
+                  <div
+                    class="primery-mastery-info position-absolute bottom-0 ps-2 text-white w-100 rounded-bottom"
+                  >
+                    <h5 class="m-0">استاد بهرامی</h5>
+                    <p class="mb-1">دبیر زبان</p>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="secondary-face position-absolute start-0 top-0 w-100 h-100 rounded-3"
+              >
+                <div class="position-relative h-100 w-100">
+                  <div class="avatar-bg h-25 bg-info rounded-3">
+                    <img
+                      class="img-avatar rounded-circle position-absolute"
+                      src="./assets/mobi-img.jpg"
+                      alt="بهرامی"
+                      width="80px"
+                      height="80px"
+                    />
+                  </div>
+                  <div class="mt-5 text-center">
+                    <h4>استاد مبینا بهرامی</h4>
+                    <p>مدرس زبان انگلیسی</p>
+                    <div class="connect-to-mastery mt-1">
+                      <a href=""><i class="fa-brands fa-telegram fs-3"></i></a>
+                      <a href=""
+                        ><i class="fa-brands fa-instagram fs-3 mx-2"></i
+                      ></a>
+                      <a href=""><i class="fa-solid fa-phone fs-4"></i></a>
+                    </div>
+
+                    <p class="mt-2">
+                      mobibahrami@gmail.com
+                      <i
+                        class="fa-solid fa-envelope fs-4 d-none d-md-inline-block"
+                      ></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Button trigger modal -->
+        <div class="text-center mt-4">
+          <button
+            type="button"
+            class="btn btn-primary w-100"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            نمایش کامل تیم ما
+          </button>
+        </div>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">تیم ما</h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body our-team-modal row"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <!-- footer -->
+    <footer class="golden-blue-footer">
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3 class="footer-title">درباره ما</h3>
+          <p class="footer-text">
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
+            استفاده از طراحان گرافیک است.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">لینک های سریع</h3>
+          <ul class="footer-links">
+            <li><a href="#">صفحه اصلی</a></li>
+            <li><a href="#">خدمات ما</a></li>
+            <li><a href="#">پروژه ها</a></li>
+            <li><a href="#">تماس با ما</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">تماس با ما</h3>
+          <ul class="contact-info">
+            <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان نمونه</li>
+            <li><i class="fas fa-phone"></i> 021-12345678</li>
+            <li><i class="fas fa-envelope"></i> info@example.com</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">شبکه های اجتماعی</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="copyright">
+        <p>© 2023 تمام حقوق محفوظ است</p>
+      </div>
+    </footer>
     <!-- js sources -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

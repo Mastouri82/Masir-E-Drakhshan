@@ -10,27 +10,27 @@ import "./ourTeam-script.js";
 
 // swiper script
 const swiper = new Swiper(".swiper", {
-  spaceBetween: 300,
+  spaceBetween: 30,
   // Enable lazy loading
   lazy: {
     loadPrevNext: true,
   },
-
+  slidesPerView: "auto",
   // Responsive breakpoints
-  breakpoints: {
-    300: {
-      slidesPerView: 1,
-      spaceBetween: 20,
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 30,
-    },
-    1024: {
-      slidesPerView: 3,
-      spaceBetween: 40,
-    },
-  },
+  // breakpoints: {
+  //   300: {
+  //     slidesPerView: 1,
+  //     spaceBetween: 20,
+  //   },
+  //   768: {
+  //     slidesPerView: 2,
+  //     spaceBetween: 30,
+  //   },
+  //   1024: {
+  //     slidesPerView: 3,
+  //     spaceBetween: 40,
+  //   },
+  // },
 
   // Disable navigation arrows
   navigation: {
@@ -38,4 +38,9 @@ const swiper = new Swiper(".swiper", {
     prevEl: ".swiper-button-prev",
   },
 });
+// var swiper = new Swiper(".swiper", {
+//   slidesPerView: "auto",
+//   spaceBetween: 30,
+  
+// });
 // ------------------------------------------------------------------------------------------

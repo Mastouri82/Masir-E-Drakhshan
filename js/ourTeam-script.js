@@ -18,14 +18,26 @@ const masteries = [
     image: "assets/mobi-img.jpg",
     field: "زبان",
   },
+  {
+    firstName: "مبینا",
+    lastName: "بهرامی",
+    image: "assets/mobi-img.jpg",
+    field: "زبان",
+  },
+  {
+    firstName: "مبینا",
+    lastName: "بهرامی",
+    image: "assets/mobi-img.jpg",
+    field: "زبان",
+  },
 ];
-const ourTeamWrp = document.querySelector(".our-team-wrp");
+const ourTeamModal = document.querySelector(".our-team-modal");
 // افزودن اساتید به صفحه
 masteries.some((master, index) => {
-  ourTeamWrp.insertAdjacentHTML(
+  ourTeamModal.insertAdjacentHTML(
     "beforeend",
     `<div
-          class="cards col-6 col-md-4 col-lg-3 overflow-hidden  rounded-2 bg-transparent"
+          class="cards col-6 col-md-4 col-lg-3 mb-4 overflow-hidden  rounded-2 bg-transparent"
         >
           <div class="card-body position-relative h-100">
             <div
@@ -65,7 +77,7 @@ masteries.some((master, index) => {
                     <a href=""><i class="fa-solid fa-phone fs-4"></i></a>
                   </div>
 
-                  <p class="mt-3">
+                  <p class="mt-2 ">
                     mobibahrami@gmail.com
                     <i class="fa-solid fa-envelope fs-4 d-none d-md-inline-block"></i>
                   </p>
@@ -75,11 +87,10 @@ masteries.some((master, index) => {
           </div>
         </div>`
   );
-  if (window.innerWidth < 768 && index == 1) return true;
 });
 const cards = document.querySelectorAll(".cards");
 cards.forEach((card) => {
   card.addEventListener("touchend", (e) => {
-    card.classList.toggle("flipped");
+    card.children[0].classList.toggle("flipped");
   });
 });
