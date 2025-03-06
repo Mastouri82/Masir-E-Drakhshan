@@ -1,23 +1,34 @@
 /* our team style card */
-.card {
-  height: 290px;
+.cards {
+  height: 270px;
   background-color: transparent;
   perspective: 500px;
 }
-
-.card .card-body {
-    transform-style:preserve-3d ;
-    transition: transform 0.5s;
+.cards:hover .card-body {
+    transform: rotateY(180deg);
+  }
+@media (hover: none) {
+  .cards:hover .card-body {
+  background-color: initial;
+  }
+}
+.flipped .card-body {
+  transform: rotateY(180deg);
+}
+.cards .card-body {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
 }
 /* .card-body{
   transform: rotateY(180deg);
 } */
-.primery-face,.secondary-face{
+.primery-face,
+.secondary-face {
   backface-visibility: hidden;
 }
-.secondary-face{
+.secondary-face {
   transform: rotateY(180deg);
-  background-color: #1e3c72;
+  background-color: #e7e7e7;
 }
 .primery-mastery-info {
   background: rgb(0, 0, 0);
@@ -26,7 +37,6 @@
     rgba(0, 0, 0, 0.4) 30%,
     rgba(0, 0, 0, 0.8) 60%
   );
-  
 }
 
 .img-avatar {
