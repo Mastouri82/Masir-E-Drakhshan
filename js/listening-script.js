@@ -203,10 +203,7 @@ async function createAudioItem(seasonTracks) {
     let acTrack = seasonTracks[track];
     urlTracks.push(acTrack.trackUrl);
     return new Promise((resolve) => {
-      console.log(acTrack.trackImg);
       setTimeout(() => {
-        console.log();
-
         audioWrpContent.insertAdjacentHTML(
           "beforeend",
           `<div class="audios mb-3 d-flex rounded-3 bg-danger">
@@ -230,7 +227,6 @@ async function createAudioItem(seasonTracks) {
         e.preventDefault();
         e.stopPropagation();
         playAndPauseAudio();
-        console.log("ooooops");
       });
       loading();
       playAudio(urlTracks, index);
@@ -271,7 +267,6 @@ const proxyUrl = "https://api.codetabs.com/v1/proxy?quest=";
 let trackName = document.querySelector(".track-name");
 let pageOfTrack = document.querySelector(".page-of-track");
 function showTrackInfo(e) {
-  console.log(e.target);
   trackName.insertAdjacentHTML(
     "beforeend",
     `
@@ -293,8 +288,6 @@ function showTrackInfo(e) {
 }
 
 function playAudio(trackUrl, index) {
-  console.log("kg");
-
   changeTracks(trackUrl, index);
   wavesurfer.load(proxyUrl + trackUrl[index]);
   playAndPauseAudio();
@@ -319,12 +312,16 @@ function changeTracks(trackUrl, index) {
 }
 const back5 = document.querySelector(".back-5");
 back5.addEventListener("touchend", () => {
-  sounds.currentTime -= 5;
+  let time = wavesurfer.getCurrentTime() - 5;
+  wavesurfer.setTime(time);
+  console.log(sounds.currentTime);
 });
 
 const forward5 = document.querySelector(".forward-5");
 forward5.addEventListener("touchend", () => {
-  sounds.currentTime += 5;
+  let time = wavesurfer.getCurrentTime() + 5;
+  wavesurfer.setTime(time);
+  console.log(sounds.currentTime);
 });
 
 // Open audio wrapper
@@ -336,8 +333,7 @@ function openAudioWrp() {
 
 // Go back to seasons
 function goBackToSeasons() {
-  document.querySelector(".audio-wrp").style.transform =
-    "translateX(102%)";
+  document.querySelector(".audio-wrp").style.transform = "translateX(102%)";
   setTimeout(() => {
     audioWrpContent.innerHTML = "";
   }, 1000);
@@ -369,32 +365,22 @@ function playAndPauseAudio() {
   // wavesurfer.playPause();
 
   if (wavesurfer.isPlaying()) {
-    console.log("ighuyiynio yiu yiuh ");
-
     wavesurfer.pause();
-    console.log("pause");
     playBtns.classList.add("fa-play");
     playBtns.classList.remove("fa-pause");
   } else {
     wavesurfer.play();
-    console.log("play");
     playBtns.classList.add("fa-pause");
     playBtns.classList.remove("fa-play");
   }
 }
 
 // Update progress bar
-// const progressBar = document.querySelector(".progress-bar");
-const currentTime = document.querySelector(".progress-container span");
 
-// wavesurfer.on("audioprocess", () => {
-//   console.log(wavesurfer.getCurrentTime());
-// });
+const currentTime = document.querySelector(".progress-container span");
 
 // Update progress bar function
 function updateProgressBar() {
-  // const progress = (wavesurfer.getCurrentTime() / wavesurfer.getDuration()) * 100;
-  // progressBar.style.width = `${progress}%`;
   const minutes = Math.floor(wavesurfer.getCurrentTime() / 60);
   const seconds = Math.floor(wavesurfer.getCurrentTime() % 60)
     .toString()
@@ -412,26 +398,19 @@ const wrpBtns = document.querySelector(".wrp-btns");
 const closeMediaCtrl = document.querySelector(".close-media-ctrl");
 const coverLisening = document.querySelector(".cover-lisening");
 
-document
-  .querySelector(".track-info")
-  .addEventListener("pointerdown", (e) => {
-    // if (e.target.classList.contains("track-info")) {
-    //    e.stopPropagation();
+document.querySelector(".track-info").addEventListener("pointerdown", (e) => {
+  mediaCtrl.style.height = "24%";
+  mediaCtrl.style.transform = "translateY(-60%)";
+  mediaCtrl.classList.add("flex-column");
+  wrpBtns.classList.add("mt-auto", "mx-auto");
+  wrpBtns.children[1].removeAttribute("hidden");
+  wrpBtns.children[3].removeAttribute("hidden");
+  wrpCoverLisening.style.display = "none";
+  closeMediaCtrl.removeAttribute("hidden");
 
-    // }
-
-    mediaCtrl.style.height = "24%";
-    mediaCtrl.style.transform = "translateY(-60%)";
-    mediaCtrl.classList.add("flex-column");
-    wrpBtns.classList.add("mt-auto", "mx-auto");
-    wrpBtns.children[1].removeAttribute("hidden");
-    wrpBtns.children[3].removeAttribute("hidden");
-    wrpCoverLisening.style.display = "none";
-    closeMediaCtrl.removeAttribute("hidden");
-
-    mediaCtrl.style.backgroundColor = "rgba(0,0,0,0.65)";
-    waveform.parentElement.style.display = "block";
-  });
+  mediaCtrl.style.backgroundColor = "rgba(0,0,0,0.65)";
+  waveform.parentElement.style.display = "block";
+});
 
 closeMediaCtrl.addEventListener("touchend", () => {
   requestAnimationFrame(() => {
@@ -445,22 +424,18 @@ closeMediaCtrl.addEventListener("touchend", () => {
     closeMediaCtrl.setAttribute("hidden", null);
     waveform.parentElement.style.display = "none";
     wrpCoverLisening.style.display = "block";
-    console.log(waveform.parentElement.style.display);
   });
 });
 // افزودن قابلیت سوایپ برای موبایل
 let touchStartX = 0;
 let touchEndX = 0;
-document
-  .querySelector(".list-wrp")
-  .addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
-  });
+document.querySelector(".list-wrp").addEventListener("touchstart", (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+});
 
 document.querySelector(".list-wrp").addEventListener("touchend", (e) => {
   touchEndX = e.changedTouches[0].screenX;
   if (touchEndX - touchStartX > 50) {
-    console.log(seasonWrp.style.transform);
     audioWrp.style.transform === "translateX(0px)"
       ? goBackToSeasons()
       : seasonWrp.style.transform === "translateX(0px)"
@@ -468,4 +443,5 @@ document.querySelector(".list-wrp").addEventListener("touchend", (e) => {
       : null;
   }
 });
-document.body.style.height=window.innerHeight+"px";
+// const forward5= document.querySelector(".forward-5");
+document.body.style.height = window.innerHeight + "px";
