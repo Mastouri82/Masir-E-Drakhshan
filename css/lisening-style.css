@@ -4,6 +4,9 @@
 body {
   font-family: "vazir";
   font-size: clamp(12px, 14px, 20px);
+  height: 100vh;
+  overflow: hidden;
+  background-color: #eceff1;
 }
 /* wrappers */
 .lisen-wrp {
