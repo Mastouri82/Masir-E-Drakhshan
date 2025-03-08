@@ -468,3 +468,4 @@ document.querySelector(".list-wrp").addEventListener("touchend", (e) => {
       : null;
   }
 });
+document.body.style.height=window.innerHeight+"px";
