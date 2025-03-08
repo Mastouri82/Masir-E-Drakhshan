@@ -1,0 +1,16 @@
+.lisening-enter-wrp{
+   
+    
+    background-color: #ECEFF1;
+}
+.lisening-details{
+    background-color: #827A7D;
+}
+.lisening-enter{
+    height: 300px;
+    background-image: url(../assets/lisening-img.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.37);
+    background-blend-mode: overlay;
+}
