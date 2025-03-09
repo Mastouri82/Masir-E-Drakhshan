@@ -1,99 +1,48 @@
 "use strict";
 
 // Create elements
-// Books information
-const booksInfo = {
-  // Book details
-  "Gold first B2": {
-    bookName: "Gold first B2",
-    teacher: "Mobina Bahrami",
-    imgBookUrl:
-      "https://www.yektaketab.ir/public/app/fa/files/images/book/original/ff3c470196b6a6b520bea1bdb837e8c8.jpg",
-    seasonsBook: {
-      // Season details
-      season1: {
-        seasonName: "Band and fans",
-        numberOfTracks: 5,
-        tracks: {
-          track1: {
-            trackName: "Track 1",
-            page: 54,
-            trackUrl: "./touraj_shabankhani_-_hanoozam.mp3",
-            trackImg: "./assets/mobi-img.jpg",
-          },
-          track2: {
-            trackName: "Track 1",
-            page: 59,
-            trackUrl:
-              "https://github.com/Mastouri82/Masir-E-Drakhshan/releases/download/1/HOSSEIN._.NAGO.NA.mp3",
-            trackImg: "./assets/logo-whit-bg.jpg",
-          },
-          track3: {
-            trackName: "Track 1",
-            page: 64,
-            trackUrl:
-              "https://github.com/Mastouri82/Masir-E-Drakhshan/releases/download/1/Feezer.-.MIAM.mp3",
-            trackImg: "./assets/mobi-img.jpg",
-          },
-        },
-      },
-      season2: {
-        seasonName: "Relative values",
-        numberOfTracks: 5,
-      },
-      season3: {
-        seasonName: "Things that matter",
-        numberOfTracks: 5,
-      },
-      season4: {
-        seasonName: "Forces of nature",
-        numberOfTracks: 5,
-      },
-    },
-  },
-  "English File Intermeiate": {
-    bookName: "English File Intermeiate",
-    teacher: "Mobina Bahrami",
-    imgBookUrl:
-      "https://www.yektaketab.ir/public/app/fa/files/images/book/original/ff3c470196b6a6b520bea1bdb837e8c8.jpg",
-    seasonsBook: {
-      season1: {
-        seasonName: "Band and fans",
-        numberOfTracks: 5,
-        tracks: {
-          track1: {
-            trackName: "Track 1",
-            trackUrl:
-              "https://irsv.upmusics.com/AliBZ/Dovara%20Raftam%20Peye%20Alkolo%20(320).mp3",
-            trackImg: "./assets/logo-whit-bg.jpg",
-          },
-          track2: {
-            trackName: "Track 1",
-            trackUrl:
-              "https://irsv.upmusics.com/AliBZ/Dovara%20Raftam%20Peye%20Alkolo%20(320).mp3",
-          },
-          track3: {
-            trackName: "Track 1",
-            trackUrl:
-              "https://irsv.upmusics.com/AliBZ/Dovara%20Raftam%20Peye%20Alkolo%20(320).mp3",
-          },
-        },
-      },
-      season2: {
-        seasonName: "Relative values",
-        numberOfTracks: 5,
-      },
-      season3: {
-        seasonName: "Things that matter",
-        numberOfTracks: 5,
-      },
-      season4: {
-        seasonName: "Forces of nature",
-        numberOfTracks: 5,
-      },
-    },
-  },
-};
+let booksInfo = {};
+
+async function loadJSON() {
+  try {
+    const response = await fetch("js/books-data.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    booksInfo = await response.json(); // مقداردهی bookData
+    console.log("✅ داده‌های JSON دریافت شد:", booksInfo);
+
+    processData();
+  } catch (error) {
+    console.error("❌ خطا در لود JSON:", error);
+  }
+}
+
+function processData() {
+  for (const book in booksInfo) {
+    booksWrp.insertAdjacentHTML(
+      "beforeend",
+      `<div class="books mb-3 d-flex rounded-3 shadow-whene-hover">
+       <img class="book-img rounded-3" src="${booksInfo[book].imgBookUrl}" alt="book image" />
+       <div class="ps-2">
+         <h3 class="my-2">${booksInfo[book].bookName}</h3>
+         <p class="my-2">Teacher: ${booksInfo[book].teacher}</p>
+       </div>
+     </div>`
+    );
+  }
+  const books = document.querySelectorAll(".books");
+  Object.keys(booksInfo).forEach((book, index) => {
+    books[index].addEventListener("click", () => {
+      openSeasonWrp();
+      createSeasonsItem(book);
+    });
+  });
+}
+
+// صدا زدن تابع
+loadJSON();
 
 // Assign wrappers
 const booksWrp = document.querySelector(".books-wrp");
@@ -102,28 +51,7 @@ const audioWrpContent = document.querySelector(".audio-wrp-content");
 
 // Create items for books wrapper
 
-for (const book in booksInfo) {
-  booksWrp.insertAdjacentHTML(
-    "beforeend",
-    `<div class="books mb-3 d-flex rounded-3 shadow-whene-hover">
-       <img class="book-img rounded-3" src="${booksInfo[book].imgBookUrl}" alt="book image" />
-       <div class="ps-2">
-         <h3 class="my-2">${booksInfo[book].bookName}</h3>
-         <p class="my-2">Teacher: ${booksInfo[book].teacher}</p>
-       </div>
-     </div>`
-  );
-}
-
 // Add event listeners to books
-
-const books = document.querySelectorAll(".books");
-Object.keys(booksInfo).forEach((book, index) => {
-  books[index].addEventListener("click", () => {
-    openSeasonWrp();
-    createSeasonsItem(book);
-  });
-});
 
 // Open season wrapper
 const seasonWrp = document.querySelector(".season-wrp");
